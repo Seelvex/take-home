@@ -21,7 +21,7 @@ const Section: React.FC<SectionProps> = (props) => {
         {description ? <p>{description}</p> : null}
       </div>
 
-      <div className="grid grid-cols-2 gap-4 p-1">
+      <div className="grid md:grid-cols-2 gap-4 p-1">
         {items.map((item) => (
           <SectionItem key={item.title} {...item} />
         ))}
