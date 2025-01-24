@@ -14,12 +14,6 @@ import Asset from '@/components/library/asset';
 import useModal from '@/hooks/useModal';
 import Modal from '@/components/shared/modal';
 
-/**
- * get tabs
- * search items - tab based
- * request action - form + action
- */
-
 export default function Library() {
   const [activeTab, setActiveTab] = React.useState<string>();
   const [activeAsset, setActiveAsset] = React.useState<string>();
