@@ -1,8 +1,8 @@
 import React from 'react';
-import { SectionItemType } from '../types';
+import { AssetType } from './types';
 import Card from '@/components/shared/card';
 
-const SectionItem: React.FC<SectionItemType> = (props) => {
+const Asset: React.FC<AssetType> = (props) => {
   const { title, description } = props;
 
   return (
@@ -18,4 +18,4 @@ const SectionItem: React.FC<SectionItemType> = (props) => {
   );
 };
 
-export default SectionItem;
+export default Asset;

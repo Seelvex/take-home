@@ -1,6 +1,9 @@
+import { SectionType } from '@/components/library/section/types';
+
 export interface Tab {
   id: string;
   label: string;
+  sections?: SectionType[];
 }
 
 export interface TabsProps {

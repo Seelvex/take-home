@@ -9,8 +9,8 @@ export const getTabs = cache(async (filters: FirestoreQueryFilter<Tab>[]) => {
     return where(filter.field, filter.operator, filter.value);
   });
 
-  const usersRef = collection(firestore, 'tabs');
-  const q = query(usersRef, ...queryConstraints, limit(100));
+  const tabsRef = collection(firestore, 'tabs');
+  const q = query(tabsRef, ...queryConstraints, limit(100));
   const querySnapshot = await getDocs(q);
 
   const tabs = querySnapshot.docs.map(

@@ -8,6 +8,9 @@ import FolderArrowDownIcon from '@heroicons/react/24/solid/FolderArrowDownIcon';
 import MagnifyingGlassIcon from '@heroicons/react/24/solid/MagnifyingGlassIcon';
 import { getTabs } from '@/lib/api/tabs';
 import { useQuery } from '@tanstack/react-query';
+import Section from '@/components/library/section';
+import { getAssets } from '@/lib/api/assets';
+import Asset from '@/components/library/asset';
 
 /**
  * get tabs
@@ -28,6 +31,25 @@ export default function Library() {
       setActiveTab(tabs[0].id);
     }
   }, [tabs, tabsLoading]);
+
+  const selectedTab = React.useMemo(() => {
+    return tabs?.find((tab) => tab.id === activeTab);
+  }, [tabs, activeTab]);
+
+  const currentAssetsDataTypes = React.useMemo(
+    () => selectedTab?.sections?.map((s) => s.dataType),
+    [selectedTab],
+  );
+
+  const { data: assetsList, isLoading: assetsListLoading } = useQuery({
+    queryKey: ['library-assets-by-tab', currentAssetsDataTypes],
+    queryFn: async () =>
+      currentAssetsDataTypes &&
+      (await getAssets([
+        { field: 'type', operator: 'in', value: currentAssetsDataTypes },
+      ])),
+    enabled: !!currentAssetsDataTypes,
+  });
 
   return (
     <main className="min-h-screen p-8 flex flex-col items-center gap-9">
@@ -53,6 +75,19 @@ export default function Library() {
         {tabs && activeTab ? (
           <Tabs tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />
         ) : null}
+
+        {selectedTab?.sections
+          ? selectedTab.sections.map((s) => (
+              <Section key={s.id} {...s}>
+                {assetsListLoading ? 'Loading...' : null}
+                <div className="flex gap-4 md:flex-row flex-col">
+                  {assetsList?.map((asset) => (
+                    <Asset key={asset.id} {...asset} />
+                  ))}
+                </div>
+              </Section>
+            ))
+          : null}
       </div>
     </main>
   );
