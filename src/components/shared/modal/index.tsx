@@ -38,6 +38,7 @@ const Modal: React.FC<ModalProps> = (props) => {
     >
       <div
         className={`bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative ${className}`}
+        onClick={(e) => e.stopPropagation()}
       >
         <div className="place-items-center">
           <div className="w-full flex flex-row-reverse">

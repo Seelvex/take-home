@@ -11,6 +11,8 @@ import { useQuery } from '@tanstack/react-query';
 import Section from '@/components/library/section';
 import { getAssets } from '@/lib/api/assets';
 import Asset from '@/components/library/asset';
+import useModal from '@/hooks/useModal';
+import Modal from '@/components/shared/modal';
 
 /**
  * get tabs
@@ -51,6 +53,8 @@ export default function Library() {
     enabled: !!currentAssetsDataTypes,
   });
 
+  const { isOpen, handleClick } = useModal()
+
   return (
     <main className="min-h-screen p-8 flex flex-col items-center gap-9">
       <div className="flex flex-row-reverse w-full">
@@ -78,16 +82,18 @@ export default function Library() {
 
         {selectedTab?.sections
           ? selectedTab.sections.map((s) => (
-              <Section key={s.id} {...s}>
-                {assetsListLoading ? 'Loading...' : null}
-                <div className="flex gap-4 md:flex-row flex-col">
-                  {assetsList?.map((asset) => (
-                    <Asset key={asset.id} {...asset} />
-                  ))}
-                </div>
-              </Section>
-            ))
+            <Section key={s.id} {...s}>
+              {assetsListLoading ? 'Loading...' : null}
+              <div className="flex gap-4 md:flex-row flex-col">
+                {assetsList?.map((asset) => (
+                  <Asset key={asset.id} {...asset} onClick={handleClick} />
+                ))}
+              </div>
+            </Section>
+          ))
           : null}
+
+        <Modal isOpen={isOpen} title={'title'} onClose={handleClick}>test children</Modal>
       </div>
     </main>
   );
