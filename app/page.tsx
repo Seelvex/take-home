@@ -23,7 +23,10 @@ export default function Home() {
         <Button variant="danger" label={'Danger Button'} />
       </div>
       <div>
-        <Input icon={<FolderArrowDownIcon />} placeholder="Type to search..." />
+        <Input
+          icon={<FolderArrowDownIcon className="size-6" />}
+          placeholder="Type to search..."
+        />
       </div>
       <div>
         <Tabs
