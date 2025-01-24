@@ -1,18 +1,8 @@
-import SectionItem from '@/components/section/item';
+import { SectionType } from './types';
+import React from 'react';
 
-interface SectionItem {
-  title: string;
-  description?: string;
-}
-
-interface SectionProps {
-  title: string;
-  description?: string;
-  items: SectionItem[];
-}
-
-const Section: React.FC<SectionProps> = (props) => {
-  const { title, description, items } = props;
+const Section: React.FC<React.PropsWithChildren<SectionType>> = (props) => {
+  const { title, description, children } = props;
 
   return (
     <div className="flex flex-col gap-8 w-full">
@@ -21,11 +11,7 @@ const Section: React.FC<SectionProps> = (props) => {
         {description ? <p>{description}</p> : null}
       </div>
 
-      <div className="grid md:grid-cols-2 gap-4 p-1">
-        {items.map((item) => (
-          <SectionItem key={item.title} {...item} />
-        ))}
-      </div>
+      {children}
     </div>
   );
 };

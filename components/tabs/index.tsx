@@ -1,16 +1,5 @@
 import React from 'react';
-
-interface Tab {
-  label: string;
-  value: number;
-}
-
-interface TabsProps {
-  tabs: Tab[];
-  activeTab: Tab['value'];
-  onTabChange: (value: Tab['value']) => void;
-  className?: string;
-}
+import { TabsProps } from './types';
 
 const Tabs: React.FC<TabsProps> = ({
   tabs,

@@ -7,23 +7,28 @@ import Tabs from '@/components/tabs';
 import FolderArrowDownIcon from '@heroicons/react/24/solid/FolderArrowDownIcon';
 import MagnifyingGlassIcon from '@heroicons/react/24/solid/MagnifyingGlassIcon';
 import Section from '@/components/section';
+import { Tab } from '@/components/tabs/types';
 
-const sections = [
+const views = [
   {
-    label: 'Featured',
+    title: 'Featured',
     description: 'Test desc',
     value: 1,
-    items: [
-      { title: 'Item Name', description: 'Item desc' },
-      { title: 'Item Name1', description: 'Item desc' },
-    ],
   },
-  { label: 'Section 2', value: 2 },
-  { label: 'Section 3', value: 3 },
+  { title: 'KPI', value: 2 },
+  { title: 'Layouts', value: 3 },
+  { title: 'Storyboards', value: 4 },
 ];
+
+const tabs: Tab[] = views.map((v) => ({ label: v.title, value: v.value }));
 
 export default function Home() {
   const [activeTab, setActiveTab] = React.useState(1);
+
+  const selectedView = React.useMemo(
+    () => views.find((v) => v.value === activeTab),
+    [activeTab],
+  );
 
   return (
     <main className="min-h-screen p-8 flex flex-col items-center gap-9">
@@ -46,19 +51,17 @@ export default function Home() {
           />
         </div>
 
-        <Tabs
-          tabs={sections}
-          activeTab={activeTab}
-          onTabChange={setActiveTab}
-        />
+        <Tabs tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />
 
-        <div className="flex item-center w-full">
-          <Section
-            title={sections[0].label}
-            items={sections[0].items || []}
-            description={sections[0]?.description}
-          />
-        </div>
+        {selectedView ? (
+          <Section {...selectedView}>
+            <div className="grid md:grid-cols-2 gap-4 p-1">
+              {/* items.map((item) => (
+                  <SectionItem key={item.title} {...item} />
+                )) */}
+            </div>
+          </Section>
+        ) : null}
       </div>
     </main>
   );

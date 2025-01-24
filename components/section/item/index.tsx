@@ -1,18 +1,14 @@
 import Modal from '@/components/modal';
 import React from 'react';
+import { SectionItemType } from '../types';
 
-interface SectionItemProps {
-  title: string;
-  description?: string;
-}
-
-const SectionItem: React.FC<SectionItemProps> = (props) => {
+const SectionItem: React.FC<SectionItemType> = (props) => {
   const { title, description } = props;
 
   const [modalOpen, setModalOpen] = React.useState(false);
 
   const handleClick = React.useCallback(() => {
-    setModalOpen(prev => !prev);
+    setModalOpen((prev) => !prev);
   }, []);
 
   return (
@@ -28,11 +24,7 @@ const SectionItem: React.FC<SectionItemProps> = (props) => {
         {description ? <p>{description}</p> : null}
       </div>
 
-      <Modal
-        isOpen={modalOpen}
-        onClose={handleClick}
-        title={'Modal Title'}
-      >
+      <Modal isOpen={modalOpen} onClose={handleClick} title={'Modal Title'}>
         content
       </Modal>
     </div>
