@@ -6,28 +6,38 @@ import Input from '@/components/shared/input';
 import Tabs from '@/components/shared/tabs';
 import FolderArrowDownIcon from '@heroicons/react/24/solid/FolderArrowDownIcon';
 import MagnifyingGlassIcon from '@heroicons/react/24/solid/MagnifyingGlassIcon';
-import { Tab } from '@/components/shared/tabs/types';
+import { getTabs } from '@/lib/api/tabs';
+import { useQuery } from '@tanstack/react-query';
 
-const views = [
+/* const tabs: Tab[] = [
   {
-    title: 'Featured',
-    description: 'Test desc',
+    label: 'Featured',
     value: 1,
   },
-  { title: 'KPI', value: 2 },
-  { title: 'Layouts', value: 3 },
-  { title: 'Storyboards', value: 4 },
-];
+  { label: 'KPI', value: 2 },
+  { label: 'Layouts', value: 3 },
+  { label: 'Storyboards', value: 4 },
+]; */
 
-const tabs: Tab[] = views.map((v) => ({ label: v.title, value: v.value }));
+/**
+ * get tabs
+ * search items - tab based
+ * request action - form + action
+ */
 
-export default function Home() {
-  const [activeTab, setActiveTab] = React.useState(1);
+export default function Library() {
+  const [activeTab, setActiveTab] = React.useState<string>();
 
-  const selectedView = React.useMemo(
-    () => views.find((v) => v.value === activeTab),
-    [activeTab],
-  );
+  const { data: tabs, isLoading: tabsLoading } = useQuery({
+    queryKey: ['library-tabs'],
+    queryFn: async () => await getTabs([]),
+  });
+
+  React.useEffect(() => {
+    if (tabs && tabs.length > 0) {
+      setActiveTab(tabs[0].id);
+    }
+  }, [tabs]);
 
   return (
     <main className="min-h-screen p-8 flex flex-col items-center gap-9">
@@ -50,8 +60,9 @@ export default function Home() {
           />
         </div>
 
-        <Tabs tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />
-
+        {tabs && activeTab ? (
+          <Tabs tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />
+        ) : null}
       </div>
     </main>
   );

@@ -1,4 +1,3 @@
-import React from 'react';
 import { TabsProps } from './types';
 
 const Tabs: React.FC<TabsProps> = ({
@@ -13,11 +12,11 @@ const Tabs: React.FC<TabsProps> = ({
     >
       {tabs.map((tab) => (
         <button
-          key={tab.value}
-          onClick={() => onTabChange(tab.value)}
+          key={tab.id}
+          onClick={() => onTabChange(tab.id)}
           className={`px-4 py-2 rounded-md text-md font-medium transition-colors w-full
             ${
-              activeTab === tab.value
+              activeTab === tab.id
                 ? 'bg-white text-gray-900 shadow-sm'
                 : 'text-gray-500 hover:text-gray-700'
             }`}

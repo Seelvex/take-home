@@ -1,11 +1,11 @@
 export interface Tab {
+  id: string;
   label: string;
-  value: number;
 }
 
 export interface TabsProps {
   tabs: Tab[];
-  activeTab: Tab['value'];
-  onTabChange: (value: Tab['value']) => void;
+  activeTab: Tab['id'];
+  onTabChange: (id: Tab['id']) => void;
   className?: string;
 }
