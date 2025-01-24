@@ -30,7 +30,7 @@ const Button: React.FC<ButtonProps> = (props) => {
       'flex items-center font-normal rounded focus:outline-none focus:ring-2';
     const variantStyles = {
       primary:
-        'bg-slate-600 text-white hover:bg-slate-200 focus:ring-slate-500',
+        'bg-slate-600 text-white hover:bg-slate-700 focus:ring-slate-500',
       secondary:
         'border border-black text-black-700 hover:bg-slate-200 focus:ring-black-500',
       danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500',
