@@ -4,7 +4,8 @@ import React from 'react';
 import Button from '@/components/button';
 import Input from '@/components/input';
 import Tabs from '@/components/tabs';
-import { FolderArrowDownIcon } from '@heroicons/react/24/solid';
+import FolderArrowDownIcon from '@heroicons/react/24/solid/FolderArrowDownIcon';
+import MagnifyingGlassIcon from '@heroicons/react/24/solid/MagnifyingGlassIcon';
 import Section from '@/components/section';
 
 const sections = [
@@ -27,13 +28,19 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-8">
       <div className="flex space-x-4">
-        <Button label={'Primary Button'} icon={<FolderArrowDownIcon />} />
+        <Button
+          label={'Primary Button'}
+          icon={<FolderArrowDownIcon className="h-5 w-5" />}
+        />
         <Button variant="secondary" label={'Secondary Button'} />
         <Button variant="danger" label={'Danger Button'} />
       </div>
 
       <div>
-        <Input icon={<FolderArrowDownIcon />} placeholder="Type to search..." />
+        <Input
+          icon={<MagnifyingGlassIcon className="h-5 w-5" />}
+          placeholder="Type to search..."
+        />
       </div>
 
       <div>

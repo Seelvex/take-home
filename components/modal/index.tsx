@@ -1,4 +1,4 @@
-import { XMarkIcon } from '@heroicons/react/24/solid';
+import XMarkIcon from '@heroicons/react/24/solid/XMarkIcon';
 import React from 'react';
 import Button from '../button';
 
@@ -41,7 +41,11 @@ const Modal: React.FC<ModalProps> = (props) => {
       >
         <div className="place-items-center">
           <div className="w-full flex flex-row-reverse">
-            <Button variant="icon" onClick={handleClick} icon={<XMarkIcon />} />
+            <Button
+              variant="icon"
+              onClick={handleClick}
+              icon={<XMarkIcon className="h-5 w-5" />}
+            />
           </div>
 
           <h3 className="text-4xl">{title}</h3>
