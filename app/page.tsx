@@ -14,7 +14,7 @@ const sections = [
     value: 1,
     items: [
       { title: 'Item Name', description: 'Item desc' },
-      { title: 'Item Name', description: 'Item desc' },
+      { title: 'Item Name1', description: 'Item desc' },
     ],
   },
   { label: 'Section 2', value: 2 },
@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-8">
       <div className="flex space-x-4">
-        <Button label={'Primary Button'} startIcon={<FolderArrowDownIcon />} />
+        <Button label={'Primary Button'} icon={<FolderArrowDownIcon />} />
         <Button variant="secondary" label={'Secondary Button'} />
         <Button variant="danger" label={'Danger Button'} />
       </div>

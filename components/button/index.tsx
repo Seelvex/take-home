@@ -1,13 +1,13 @@
 import React from 'react';
 
 interface ButtonProps {
-  label: string;
-  onClick?: () => void;
+  label?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
   disabled?: boolean;
-  variant?: 'primary' | 'secondary' | 'danger';
+  variant?: 'primary' | 'secondary' | 'danger' | 'icon';
   size?: 'sm' | 'md' | 'lg';
-  startIcon?: React.ReactNode;
+  icon?: React.ReactNode;
 }
 
 /**
@@ -19,7 +19,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     variant = 'primary',
     size = 'md',
     label,
-    startIcon,
+    icon,
     className,
     disabled,
     ...buttonProps
@@ -30,10 +30,11 @@ const Button: React.FC<ButtonProps> = (props) => {
       'flex items-center font-normal rounded focus:outline-none focus:ring-2';
     const variantStyles = {
       primary:
-        'bg-slate-600 text-white hover:bg-slate-700 focus:ring-slate-500',
+        'bg-slate-600 text-white hover:bg-slate-200 focus:ring-slate-500',
       secondary:
-        'border border-black text-black-700 hover:bg-slate-300 focus:ring-black-500',
+        'border border-black text-black-700 hover:bg-slate-200 focus:ring-black-500',
       danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500',
+      icon: 'bg-transparent text-black-700 hover:bg-slate-200 focus:ring-black-500',
     };
     const sizeStyles = {
       sm: 'px-3 py-1 text-sm',
@@ -49,8 +50,10 @@ const Button: React.FC<ButtonProps> = (props) => {
 
   return (
     <button {...buttonProps} className={getClassName()}>
-      {startIcon ? <span className="mr-2">{startIcon}</span> : null}
-      <span>{label}</span>
+      {icon ? <div>{icon}</div> : null}
+      {label ? (
+        <span className={icon ? 'ml-2' : undefined}>{label}</span>
+      ) : null}
     </button>
   );
 };
