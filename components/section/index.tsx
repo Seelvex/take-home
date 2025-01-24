@@ -15,7 +15,7 @@ const Section: React.FC<SectionProps> = (props) => {
   const { title, description, items } = props;
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 w-full">
       <div className="flex flex-col gap-2">
         <p className="text-4xl">{title}</p>
         {description ? <p>{description}</p> : null}

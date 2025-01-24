@@ -44,7 +44,7 @@ export default function Home() {
         />
       </div>
 
-      <div className="w-full">
+      <div className="flex item-center w-full">
         <Section
           title={sections[0].label}
           items={sections[0].items || []}
