@@ -22,6 +22,7 @@ import Modal from '@/components/shared/modal';
 
 export default function Library() {
   const [activeTab, setActiveTab] = React.useState<string>();
+  const [activeAsset, setActiveAsset] = React.useState<string>();
 
   const { data: tabs, isLoading: tabsLoading } = useQuery({
     queryKey: ['library-tabs'],
@@ -53,7 +54,29 @@ export default function Library() {
     enabled: !!currentAssetsDataTypes,
   });
 
-  const { isOpen, handleClick } = useModal()
+  const { isOpen, handleClick } = useModal();
+
+  const handleAssetClick = React.useCallback(
+    (id: string) => {
+      setActiveAsset(id);
+      handleClick();
+    },
+    [handleClick],
+  );
+
+  const selectedAsset = React.useMemo(
+    () => assetsList?.find((asset) => asset.id === activeAsset),
+    [activeAsset, assetsList],
+  );
+
+  const modalContent = React.useMemo(() => {
+    if (!selectedAsset) return null;
+    return (
+      <div className="flex flex-col gap-4 mb-4">
+        {selectedAsset.title} - {selectedAsset.type}
+      </div>
+    );
+  }, [selectedAsset]);
 
   return (
     <main className="min-h-screen p-8 flex flex-col items-center gap-9">
@@ -82,18 +105,28 @@ export default function Library() {
 
         {selectedTab?.sections
           ? selectedTab.sections.map((s) => (
-            <Section key={s.id} {...s}>
-              {assetsListLoading ? 'Loading...' : null}
-              <div className="flex gap-4 md:flex-row flex-col">
-                {assetsList?.map((asset) => (
-                  <Asset key={asset.id} {...asset} onClick={handleClick} />
-                ))}
-              </div>
-            </Section>
-          ))
+              <Section key={s.id} {...s}>
+                {assetsListLoading ? 'Loading...' : null}
+                <div className="flex gap-4 md:flex-row flex-col">
+                  {assetsList?.map((asset) => (
+                    <Asset
+                      key={asset.id}
+                      {...asset}
+                      onClick={handleAssetClick}
+                    />
+                  ))}
+                </div>
+              </Section>
+            ))
           : null}
 
-        <Modal isOpen={isOpen} title={'title'} onClose={handleClick}>test children</Modal>
+        <Modal
+          isOpen={isOpen}
+          title={selectedAsset?.title}
+          onClose={handleClick}
+        >
+          {modalContent}
+        </Modal>
       </div>
     </main>
   );

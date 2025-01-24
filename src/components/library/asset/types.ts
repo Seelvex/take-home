@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export interface AssetType {
   id: string;
@@ -8,5 +8,5 @@ export interface AssetType {
 }
 
 export interface AssetProps extends AssetType {
-  onClick?: React.MouseEventHandler
+  onClick?: (id: string) => void;
 }
