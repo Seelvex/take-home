@@ -26,37 +26,39 @@ export default function Home() {
   const [activeTab, setActiveTab] = React.useState(1);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-8">
-      <div className="flex space-x-4">
+    <main className="min-h-screen p-8 flex flex-col items-center gap-9">
+      <div className="flex flex-row-reverse w-full">
         <Button
-          label={'Primary Button'}
+          label={'Request'}
           icon={<FolderArrowDownIcon className="h-5 w-5" />}
         />
-        <Button variant="secondary" label={'Secondary Button'} />
-        <Button variant="danger" label={'Danger Button'} />
       </div>
+      <div className="flex flex-col gap-9 w-full md:w-3/6">
+        <div className="flex flex-col text-center gap-8 mb-6">
+          <h2 className="text-5xl font-bold">Library</h2>
+          <p className="text-lg">Description library</p>
+        </div>
 
-      <div>
-        <Input
-          icon={<MagnifyingGlassIcon className="h-5 w-5" />}
-          placeholder="Type to search..."
-        />
-      </div>
+        <div>
+          <Input
+            icon={<MagnifyingGlassIcon className="h-5 w-5" />}
+            placeholder="Type to search..."
+          />
+        </div>
 
-      <div>
         <Tabs
           tabs={sections}
           activeTab={activeTab}
           onTabChange={setActiveTab}
         />
-      </div>
 
-      <div className="flex item-center w-full">
-        <Section
-          title={sections[0].label}
-          items={sections[0].items || []}
-          description={sections[0]?.description}
-        />
+        <div className="flex item-center w-full">
+          <Section
+            title={sections[0].label}
+            items={sections[0].items || []}
+            description={sections[0]?.description}
+          />
+        </div>
       </div>
     </main>
   );
