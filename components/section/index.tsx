@@ -20,6 +20,7 @@ const Section: React.FC<SectionProps> = (props) => {
         <p className="text-4xl">{title}</p>
         {description ? <p>{description}</p> : null}
       </div>
+
       <div className="grid grid-cols-2 gap-4 p-1">
         {items.map((item) => (
           <SectionItem key={item.title} {...item} />
