@@ -9,16 +9,6 @@ import MagnifyingGlassIcon from '@heroicons/react/24/solid/MagnifyingGlassIcon';
 import { getTabs } from '@/lib/api/tabs';
 import { useQuery } from '@tanstack/react-query';
 
-/* const tabs: Tab[] = [
-  {
-    label: 'Featured',
-    value: 1,
-  },
-  { label: 'KPI', value: 2 },
-  { label: 'Layouts', value: 3 },
-  { label: 'Storyboards', value: 4 },
-]; */
-
 /**
  * get tabs
  * search items - tab based
@@ -34,10 +24,10 @@ export default function Library() {
   });
 
   React.useEffect(() => {
-    if (tabs && tabs.length > 0) {
+    if (tabs && tabs.length > 0 && !tabsLoading) {
       setActiveTab(tabs[0].id);
     }
-  }, [tabs]);
+  }, [tabs, tabsLoading]);
 
   return (
     <main className="min-h-screen p-8 flex flex-col items-center gap-9">
