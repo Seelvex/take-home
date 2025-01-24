@@ -1,13 +1,12 @@
 'use client';
 
 import React from 'react';
-import Button from '@/components/button';
-import Input from '@/components/input';
-import Tabs from '@/components/tabs';
+import Button from '@/components/shared/button';
+import Input from '@/components/shared/input';
+import Tabs from '@/components/shared/tabs';
 import FolderArrowDownIcon from '@heroicons/react/24/solid/FolderArrowDownIcon';
 import MagnifyingGlassIcon from '@heroicons/react/24/solid/MagnifyingGlassIcon';
-import Section from '@/components/section';
-import { Tab } from '@/components/tabs/types';
+import { Tab } from '@/components/shared/tabs/types';
 
 const views = [
   {
@@ -53,15 +52,6 @@ export default function Home() {
 
         <Tabs tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />
 
-        {selectedView ? (
-          <Section {...selectedView}>
-            <div className="grid md:grid-cols-2 gap-4 p-1">
-              {/* items.map((item) => (
-                  <SectionItem key={item.title} {...item} />
-                )) */}
-            </div>
-          </Section>
-        ) : null}
       </div>
     </main>
   );
