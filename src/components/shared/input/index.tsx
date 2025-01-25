@@ -41,7 +41,7 @@ const Input: React.FC<InputProps> = (props) => {
             variant="icon"
             icon={<XMarkIcon className="h-5 w-5" />}
             onClick={handleClear}
-            className='py-0'
+            className="py-0"
           />
         </div>
       ) : null}
