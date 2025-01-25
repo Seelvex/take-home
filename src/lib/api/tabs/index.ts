@@ -1,11 +1,6 @@
-'use server';
-
 import { TabType } from '@/components/library/asset/types';
-import client, { DB_NAME } from '@/lib/mongodb';
 
-const COLLECTION_NAME = 'tabs';
-
-export async function getTabs() {
+/* export async function getTabs() {
   try {
     const mongoClient = await client.connect();
     const data = await mongoClient
@@ -23,4 +18,30 @@ export async function getTabs() {
     console.error(e);
     return [];
   }
+} */
+
+const TABS: TabType[] = [
+  {
+    _id: '6794cb08025446bd7728bf97',
+    label: 'Featured',
+    sections: [
+      {
+        id: '1',
+        title: 'Featured',
+        description: 'desc featured',
+        allowedTypes: ['layout', 'kpi'],
+      },
+    ],
+  },
+  {
+    _id: '6794edf4025446bd7728bf9c',
+    label: 'KPI',
+    sections: [
+      { id: '1', title: 'KPI', description: 'desc KPI', allowedTypes: ['kpi'] },
+    ],
+  },
+];
+
+export async function getTabs() {
+  return TABS;
 }

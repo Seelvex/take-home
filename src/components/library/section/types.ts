@@ -1,6 +1,6 @@
 export interface SectionType {
   title: string;
-  id: number;
+  id: string;
   description?: string;
   allowedTypes: string[];
 }

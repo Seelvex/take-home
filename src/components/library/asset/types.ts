@@ -13,7 +13,7 @@ export interface AssetProps {
 }
 
 export interface TabType {
-  id: string;
+  _id: string;
   label: string;
   sections: SectionType[];
 }

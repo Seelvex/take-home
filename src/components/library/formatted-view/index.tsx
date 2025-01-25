@@ -12,28 +12,28 @@ import Tabs from '@/components/shared/tabs';
 import Section from '../section';
 import Asset from '../asset';
 import Modal from '@/components/shared/modal';
+import { getTabs } from '@/lib/api/tabs';
 
-interface FormattedViewProps {
-  tabs: TabType[];
-}
-
-const FormattedView: React.FC<FormattedViewProps> = (props) => {
-  const { tabs } = props;
-
+const FormattedView: React.FC = () => {
   const [activeTab, setActiveTab] = React.useState<string>();
   const [activeAsset, setActiveAsset] = React.useState<string>();
 
   const { isOpen, handleClick } = useModal();
   const { searchValue, setSearchValue } = useSearch();
 
+  const { data: tabs } = useQuery({
+    queryKey: ['library-tabs'],
+    queryFn: getTabs,
+  });
+
   React.useEffect(() => {
     if (tabs && tabs.length > 0) {
-      setActiveTab(tabs[0].id);
+      setActiveTab(tabs[0]._id);
     }
   }, [tabs]);
 
   const selectedTab = React.useMemo(() => {
-    return tabs?.find((tab) => tab.id === activeTab);
+    return tabs?.find((tab) => tab._id === activeTab);
   }, [tabs, activeTab]);
 
   const currentAssetsDataTypes = React.useMemo(() => {

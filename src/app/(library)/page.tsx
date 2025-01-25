@@ -1,12 +1,9 @@
 import React from 'react';
 import Button from '@/components/shared/button';
 import FolderArrowDownIcon from '@heroicons/react/24/solid/FolderArrowDownIcon';
-import { getTabs } from '@/lib/api/tabs';
 import FormattedView from '@/components/library/formatted-view';
 
 export default async function Library() {
-  const tabs = await getTabs();
-
   return (
     <main className="min-h-screen p-8 flex flex-col items-center gap-9">
       <div className="flex flex-row-reverse w-full">
@@ -21,7 +18,7 @@ export default async function Library() {
           <p className="text-lg">Description library</p>
         </div>
 
-        <FormattedView tabs={tabs} />
+        <FormattedView />
       </div>
     </main>
   );
