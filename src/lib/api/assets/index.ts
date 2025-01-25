@@ -35,8 +35,30 @@ const ASSETS: AssetType[] = [
   {
     _id: '6794d6d4025446bd7728bf98',
     title: 'Title1',
+    subTitle: 'SubTitle1',
     description: 'Desc item1',
     type: 'layout',
+    tags: ['tadsadsadsg4', 'tadsadsadsg4'], 
+    statistics: {
+      used: 2,
+      type: 'type1',
+      numOfPages: 3,
+      lastUpdated: '2021-09-01',
+    },
+    url: 'test',
+    previewUrl: 'test',
+    businessQuestions: [
+      {
+        id: '1',
+        title: 'Title1',
+        description: 'Desc item1',
+      },
+      {
+        id: '2',
+        title: 'Title2',
+        description: 'Desc item2',
+      },
+    ],
   },
   {
     _id: '6794db86025446bd7728bf99',

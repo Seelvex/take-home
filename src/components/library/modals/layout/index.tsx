@@ -1,5 +1,7 @@
+import React from 'react';
 import { AssetType } from '../../asset/types';
 import AssetModal from '../asset';
+import Divider from '@/components/shared/divider';
 
 interface LayoutModalProps {
   asset: AssetType;
@@ -8,10 +10,33 @@ interface LayoutModalProps {
 const LayoutModal: React.FC<LayoutModalProps> = (props) => {
   const { asset } = props;
 
+  const statisticsComponent = React.useMemo(() => {
+    if (!asset.statistics) return null;
+
+    const entries = Object.entries(asset.statistics);
+    return entries.map(([key, value], i) => {
+      return (
+        <React.Fragment key={key}>
+          <div className="flex flex-col gap-2 items-center">
+            <p className="text-lg">{value}</p>
+            <p className="text-sm text-slate-400">{key}</p>
+          </div>
+          {i < entries.length - 1 ? <Divider orientation={'vertical'} /> : null}
+        </React.Fragment>
+      );
+    });
+  }, [asset]);
+
   return (
     <AssetModal asset={asset}>
       <div className="flex flex-col gap-4 mb-4 w-full items-center">
-        LAYOUT MODAL BODY
+        <div className="flex justify-between w-2/3 p-4">
+          {statisticsComponent}
+        </div>
+
+        <div className="flex min-h-[30vh] w-full bg-slate-200 items-center justify-center rounded-md">
+          preview
+        </div>
       </div>
     </AssetModal>
   );

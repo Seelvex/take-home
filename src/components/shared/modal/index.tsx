@@ -39,7 +39,7 @@ const Modal: React.FC<ModalProps> = (props) => {
       onClick={handleClick}
     >
       <div
-        className={`bg-white rounded-lg shadow-lg max-w-md w-full p-2 relative ${className}`}
+        className={`bg-white rounded-lg shadow-lg max-w-md w-full p-2 relative min-w-[50%] max-h-[90%] ${className}`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="place-items-center">
@@ -55,7 +55,7 @@ const Modal: React.FC<ModalProps> = (props) => {
           {title ? <h3 className="text-4xl">{title}</h3> : null}
           {description ? <p>{description}</p> : null}
 
-          <div className="mt-2 w-full">{children}</div>
+          <div className="mt-2 w-full overflow-auto">{children}</div>
         </div>
       </div>
     </div>
