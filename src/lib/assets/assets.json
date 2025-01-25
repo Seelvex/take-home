@@ -47,7 +47,6 @@
       "trending"
     ],
     "url": "test",
-    "previewUrl": "test",
     "metrics": {
       "Total Profit": 100000,
       "Total Profit (Last Month)": 200000,
@@ -73,6 +72,35 @@
     "visuals": [
       "chart",
       "lines"
+    ],
+    "affiliateList": [
+      {
+        "_id": "1",
+        "title": "Affiliate1",
+        "description": "Desc Affiliate1",
+        "score": 4
+      },
+      {
+        "_id": "2",
+        "title": "Affiliate2",
+        "description": "Desc Affiliate2",
+        "score": 3
+      }
+    ]
+  },
+  {
+    "_id": "6794d6d4025446bd7728bf98",
+    "title": "Title3",
+    "subTitle": "SubTitle3",
+    "description": "Desc item3",
+    "type": "storyboard",
+    "url": "test",
+    "linkedEntities": [
+      {
+        "type": "kpi",
+        "_id": "6794d6d4025446bd7728bf983232",
+        "using": true
+      }
     ],
     "affiliateList": [
       {

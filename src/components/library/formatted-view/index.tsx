@@ -17,7 +17,7 @@ import AssetModal from '../modals/asset';
 import StoryboardModal from '../modals/storyboard';
 import Button from '@/components/shared/button';
 import LinkIcon from '@heroicons/react/24/solid/LinkIcon';
-import StarIcon from '@heroicons/react/24/solid/StarIcon';
+import BookmarkIcon from '@heroicons/react/24/solid/BookmarkIcon';
 import LibrarySearchBar from '../search-bar';
 
 const FormattedView: React.FC = () => {
@@ -141,7 +141,7 @@ const FormattedView: React.FC = () => {
       {
         label: 'Favourite Item',
         onClick: handleToggleFavourite,
-        icon: <StarIcon className="h-5 w-5" />,
+        icon: <BookmarkIcon className="h-5 w-5" />,
       },
     ];
     return items.map((item) => (

@@ -12,10 +12,11 @@ interface LinkedEntity {
   using: boolean;
 }
 
-interface Affiliate {
+export interface Affiliate {
   _id: string;
   title: string;
   description: string;
+  score?: number;
 }
 
 export interface AssetType {
@@ -32,7 +33,7 @@ export interface AssetType {
   linkedEntities?: LinkedEntity[];
   calculations?: Record<string, string>;
   visuals?: string[];
-  affiliateList?: (Affiliate & { score: number })[];
+  affiliateList?: Affiliate[];
 }
 
 export interface AssetProps {

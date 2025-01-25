@@ -1,3 +1,4 @@
+import { TabType } from '@/components/library/asset/types';
 import tabs from '@/lib/assets/tabs.json';
 
 /* export async function getTabs() {
@@ -21,5 +22,5 @@ import tabs from '@/lib/assets/tabs.json';
 } */
 
 export async function getTabs() {
-  return tabs;
+  return tabs as TabType[];
 }
