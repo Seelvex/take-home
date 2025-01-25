@@ -56,11 +56,15 @@ export async function getAssets(filters: {
   searchTerms?: string;
   types: string[];
 }) {
-  return ASSETS.filter((asset) =>
-    filters.types.includes(asset.type) && filters.searchTerms
-      ? asset.title
+  const data = ASSETS.filter((asset) => filters.types.includes(asset.type));
+  if (filters.searchTerms) {
+    return data.filter(
+      (asset) =>
+        filters.searchTerms &&
+        asset.title
           .toLocaleLowerCase()
-          .includes(filters.searchTerms.toLocaleLowerCase())
-      : true,
-  );
+          .includes(filters.searchTerms.toLocaleLowerCase()),
+    );
+  }
+  return data;
 }
