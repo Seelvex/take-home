@@ -10,10 +10,10 @@ interface LayoutModalProps {
 const LayoutModal: React.FC<LayoutModalProps> = (props) => {
   const { asset } = props;
 
-  const statisticsComponent = React.useMemo(() => {
-    if (!asset.statistics) return null;
+  const metricsComponent = React.useMemo(() => {
+    if (!asset.metrics) return null;
 
-    const entries = Object.entries(asset.statistics);
+    const entries = Object.entries(asset.metrics);
     return entries.map(([key, value], i) => {
       return (
         <React.Fragment key={key}>
@@ -31,7 +31,7 @@ const LayoutModal: React.FC<LayoutModalProps> = (props) => {
     <AssetModal asset={asset}>
       <div className="flex flex-col gap-4 mb-4 w-full items-center">
         <div className="flex justify-between md:w-4/5 w-full p-4">
-          {statisticsComponent}
+          {metricsComponent}
         </div>
 
         <div className="flex min-h-[30vh] w-full bg-slate-200 items-center justify-center rounded-md">

@@ -80,6 +80,9 @@ const FormattedView: React.FC = () => {
     enabled: !!currentAssetsDataTypes,
   });
 
+  /**
+   * modal content
+   */
   const modalContent = React.useMemo(() => {
     if (!activeAsset) return null;
     switch (activeAsset.type) {
@@ -130,6 +133,9 @@ const FormattedView: React.FC = () => {
     ));
   }, [handleCopyLink]);
 
+  /**
+   * modal bottom actions
+   */
   const modalBottomActions = React.useMemo(() => {
     const items = [
       {
@@ -162,9 +168,16 @@ const FormattedView: React.FC = () => {
 
       {selectedTab?.sections
         ? selectedTab.sections.map((s) => {
-            const filteredAssets = assetsList?.filter((a) =>
-              s.allowedTypes.includes(a.type),
-            );
+            const filteredAssets = assetsList?.filter((a) => {
+              let allowed = false;
+              if (s.allowedTypes && s.allowedTypes.length > 0) {
+                allowed = s.allowedTypes.includes(a.type);
+              }
+              if (s.tags && s.tags.length > 0) {
+                allowed = a.tags?.some((tag) => s.tags?.includes(tag)) || false;
+              }
+              return allowed;
+            });
             return (
               <Section key={s.id} {...s}>
                 {assetsListLoading ? 'Loading...' : null}

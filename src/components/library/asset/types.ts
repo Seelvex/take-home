@@ -1,12 +1,5 @@
 import { SectionType } from '../section/types';
 
-interface Statistics {
-  used?: number;
-  type?: string;
-  numOfPages?: number;
-  lastUpdated?: string;
-}
-
 interface BusinessQuestion {
   id: string;
   title: string;
@@ -20,7 +13,7 @@ export interface AssetType {
   description?: string;
   type: string;
   tags?: string[];
-  statistics?: Statistics;
+  metrics?: Record<string, number | string>;
   previewUrl?: string;
   url?: string;
   businessQuestions?: BusinessQuestion[];

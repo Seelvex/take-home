@@ -3,4 +3,5 @@ export interface SectionType {
   id: string;
   description?: string;
   allowedTypes: string[];
+  tags?: string[];
 }
