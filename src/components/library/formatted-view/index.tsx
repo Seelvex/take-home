@@ -17,6 +17,8 @@ import KpiModal from '../modals/kpi';
 import LayoutModal from '../modals/layout';
 import AssetModal from '../modals/asset';
 import StoryboardModal from '../modals/storyboard';
+import Button from '@/components/shared/button';
+import { LinkIcon } from '@heroicons/react/24/solid';
 
 const FormattedView: React.FC = () => {
   const [activeTab, setActiveTab] = React.useState<string>();
@@ -96,6 +98,20 @@ const FormattedView: React.FC = () => {
     }
   }, [activeAsset]);
 
+  const handleCopyLink = React.useCallback(() => {
+    console.log('Copy link', activeAsset);
+  }, [activeAsset]);
+
+  const modalExtraTopActions = React.useMemo(() => {
+    return (
+      <Button
+        variant="icon"
+        onClick={handleCopyLink}
+        icon={<LinkIcon className="h-5 w-5" />}
+      />
+    );
+  }, [handleCopyLink]);
+
   const handleInputChange = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setSearchValue(e.target.value);
@@ -144,7 +160,11 @@ const FormattedView: React.FC = () => {
           })
         : null}
 
-      <Modal isOpen={isOpen} onClose={handleClick}>
+      <Modal
+        isOpen={isOpen}
+        onClose={handleClick}
+        extraTopActions={modalExtraTopActions}
+      >
         {modalContent}
       </Modal>
     </React.Fragment>

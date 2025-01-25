@@ -9,6 +9,7 @@ interface ModalProps {
   title?: React.ReactNode;
   description?: React.ReactNode;
   className?: string;
+  extraTopActions?: React.ReactNode;
 }
 
 const Modal: React.FC<ModalProps> = (props) => {
@@ -19,6 +20,7 @@ const Modal: React.FC<ModalProps> = (props) => {
     title,
     className = '',
     description,
+    extraTopActions,
   } = props;
 
   const handleClick = React.useCallback(
@@ -47,6 +49,7 @@ const Modal: React.FC<ModalProps> = (props) => {
               onClick={handleClick}
               icon={<XMarkIcon className="h-5 w-5" />}
             />
+            {extraTopActions}
           </div>
 
           {title ? <h3 className="text-4xl">{title}</h3> : null}

@@ -1,6 +1,4 @@
-import SquareAvatar from '@/components/shared/square-avatar';
 import { AssetType } from '../../asset/types';
-import Chip from '@/components/shared/chip';
 import AssetModal from '../asset';
 
 interface LayoutModalProps {
