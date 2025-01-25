@@ -16,7 +16,8 @@ import LayoutModal from '../modals/layout';
 import AssetModal from '../modals/asset';
 import StoryboardModal from '../modals/storyboard';
 import Button from '@/components/shared/button';
-import { LinkIcon } from '@heroicons/react/24/solid';
+import LinkIcon from '@heroicons/react/24/solid/LinkIcon';
+import StarIcon from '@heroicons/react/24/solid/StarIcon';
 import LibrarySearchBar from '../search-bar';
 
 const FormattedView: React.FC = () => {
@@ -97,19 +98,42 @@ const FormattedView: React.FC = () => {
     }
   }, [activeAsset]);
 
+  /**
+   * @todo implement toggle favourite functionality
+   */
+  const handleToggleFavourite = React.useCallback(() => {
+    console.log('handleToggleFavourite', activeAsset);
+  }, [activeAsset]);
+
+  /**
+   * @todo implement copy link functionality
+   */
   const handleCopyLink = React.useCallback(() => {
-    console.log('Copy link', activeAsset);
+    console.log('handleCopyLink', activeAsset);
   }, [activeAsset]);
 
   const modalExtraTopActions = React.useMemo(() => {
-    return (
+    const items = [
+      {
+        label: 'Copy Link',
+        onClick: handleCopyLink,
+        icon: <LinkIcon className="h-5 w-5" />,
+      },
+      {
+        label: 'Toggle Favourite',
+        onClick: handleToggleFavourite,
+        icon: <StarIcon className="h-5 w-5" />,
+      },
+    ];
+    return items.map((item) => (
       <Button
+        key={item.label}
         variant="icon"
-        onClick={handleCopyLink}
-        icon={<LinkIcon className="h-5 w-5" />}
+        onClick={item.onClick}
+        icon={item.icon}
       />
-    );
-  }, [handleCopyLink]);
+    ));
+  }, [handleCopyLink, handleToggleFavourite]);
 
   return (
     <React.Fragment>
