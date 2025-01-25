@@ -1,0 +1,18 @@
+import { AssetType } from '../../asset/types';
+
+interface LayoutModalProps {
+  asset: AssetType;
+}
+
+const LayoutModal: React.FC<LayoutModalProps> = (props) => {
+  const { asset } = props;
+
+  return (
+    <div className="flex flex-col gap-4 mb-4">
+      <p>LAYOUT MODAL</p>
+      {asset.title} - {asset.type}
+    </div>
+  );
+};
+
+export default LayoutModal;

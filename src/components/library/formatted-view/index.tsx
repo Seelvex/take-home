@@ -4,7 +4,7 @@ import React from 'react';
 import useModal from '@/hooks/useModal';
 import useSearch from '@/hooks/useSearch';
 import { useQuery } from '@tanstack/react-query';
-import { TabType } from '../asset/types';
+import { AssetType, TabType } from '../asset/types';
 import { getAssets } from '@/lib/api/assets';
 import MagnifyingGlassIcon from '@heroicons/react/24/solid/MagnifyingGlassIcon';
 import Input from '@/components/shared/input';
@@ -13,10 +13,13 @@ import Section from '../section';
 import Asset from '../asset';
 import Modal from '@/components/shared/modal';
 import { getTabs } from '@/lib/api/tabs';
+import KpiModal from '../modals/kpi';
+import LayoutModal from '../modals/layout';
+import AssetModal from '../modals/asset';
 
 const FormattedView: React.FC = () => {
   const [activeTab, setActiveTab] = React.useState<string>();
-  const [activeAsset, setActiveAsset] = React.useState<string>();
+  const [activeAsset, setActiveAsset] = React.useState<AssetType>();
 
   const { isOpen, handleClick } = useModal();
   const { searchValue, setSearchValue } = useSearch();
@@ -45,8 +48,8 @@ const FormattedView: React.FC = () => {
   }, [selectedTab]);
 
   const handleAssetClick = React.useCallback(
-    (id: string) => {
-      setActiveAsset(id);
+    (asset: AssetType) => {
+      setActiveAsset(asset);
       handleClick();
     },
     [handleClick],
@@ -74,22 +77,17 @@ const FormattedView: React.FC = () => {
     enabled: !!currentAssetsDataTypes,
   });
 
-  const selectedAsset = React.useMemo(
-    () => assetsList?.find((asset) => asset._id.toString() === activeAsset),
-    [activeAsset, assetsList],
-  );
-
   const modalContent = React.useMemo(() => {
-    if (!selectedAsset) return null;
-    /**
-     * @todo implement components/library/modals
-     */
-    return (
-      <div className="flex flex-col gap-4 mb-4">
-        {selectedAsset.title} - {selectedAsset.type}
-      </div>
-    );
-  }, [selectedAsset]);
+    if (!activeAsset) return null;
+    switch (activeAsset.type) {
+      case 'kpi':
+        return <KpiModal asset={activeAsset} />;
+      case 'layout':
+        return <LayoutModal asset={activeAsset} />;
+      default:
+        return <AssetModal asset={activeAsset} />;
+    }
+  }, [activeAsset]);
 
   const handleInputChange = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -100,7 +98,6 @@ const FormattedView: React.FC = () => {
 
   return (
     <React.Fragment>
-      {/** @todo Search component + hook logic */}
       <div>
         <Input
           icon={<MagnifyingGlassIcon className="h-5 w-5" />}
@@ -118,20 +115,24 @@ const FormattedView: React.FC = () => {
         ? selectedTab.sections.map((s) => (
             <Section key={s.id} {...s}>
               {assetsListLoading ? 'Loading...' : null}
-              <div className="flex gap-4 md:flex-row flex-col">
-                {assetsList?.map((asset) => (
-                  <Asset
-                    key={asset._id.toString()}
-                    asset={asset}
-                    onClick={handleAssetClick}
-                  />
-                ))}
-              </div>
+              {assetsList && assetsList.length > 0 ? (
+                <div className="flex gap-4 md:flex-row flex-col">
+                  {assetsList?.map((asset) => (
+                    <Asset
+                      key={asset._id.toString()}
+                      asset={asset}
+                      onClick={() => handleAssetClick(asset)}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <p>No data, try different filters</p>
+              )}
             </Section>
           ))
         : null}
 
-      <Modal isOpen={isOpen} title={selectedAsset?.title} onClose={handleClick}>
+      <Modal isOpen={isOpen} title={activeAsset?.title} onClose={handleClick}>
         {modalContent}
       </Modal>
     </React.Fragment>

@@ -1,18 +1,18 @@
 import { AssetType } from '../../asset/types';
 
-interface AssetModalProps {
+interface KpiModalProps {
   asset: AssetType;
 }
 
-const AssetModal: React.FC<AssetModalProps> = (props) => {
+const KpiModal: React.FC<KpiModalProps> = (props) => {
   const { asset } = props;
 
   return (
     <div className="flex flex-col gap-4 mb-4">
-      <p>ASSET MODAL</p>
+      <p>KPI MODAL</p>
       {asset.title} - {asset.type}
     </div>
   );
 };
 
-export default AssetModal;
+export default KpiModal;
