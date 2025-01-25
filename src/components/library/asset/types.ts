@@ -12,6 +12,12 @@ interface LinkedEntity {
   using: boolean;
 }
 
+interface Affiliate {
+  _id: string;
+  title: string;
+  description: string;
+}
+
 export interface AssetType {
   _id: string;
   title: string;
@@ -19,11 +25,14 @@ export interface AssetType {
   description?: string;
   type: string;
   tags?: string[];
-  metrics?: Record<string, number | string>;
+  metrics?: Record<string, number | string | boolean | null | undefined>;
   previewUrl?: string;
   url?: string;
   businessQuestions?: BusinessQuestion[];
   linkedEntities?: LinkedEntity[];
+  calculations?: Record<string, string>;
+  visuals?: string[];
+  affiliateList?: (Affiliate & { score: number })[];
 }
 
 export interface AssetProps {

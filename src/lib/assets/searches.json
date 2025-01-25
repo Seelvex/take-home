@@ -1,0 +1,12 @@
+[
+  {
+    "_id": "1",
+    "userId": "1",
+    "value": "old search 1"
+  },
+  {
+    "_id": "2",
+    "userId": "1",
+    "value": "old search 2"
+  }
+]
