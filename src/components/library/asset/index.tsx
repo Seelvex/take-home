@@ -1,6 +1,7 @@
 import React from 'react';
 import { AssetProps } from './types';
 import Card from '@/components/shared/card';
+import SquareAvatar from '@/components/shared/square-avatar';
 
 const Asset: React.FC<AssetProps> = (props) => {
   const { asset, onClick } = props;
@@ -12,16 +13,10 @@ const Asset: React.FC<AssetProps> = (props) => {
 
   return (
     <Card className="gap-4 max-h-52" onClick={handleClick}>
-      <div className="place-content-center text-center rounded-md aspect-square w-1/4 bg-slate-200">
-        <span>i</span>
-      </div>
+      <SquareAvatar component={asset?.type} />
       <div className="place-content-center">
         <p className="font-bold">{asset?.title}</p>
-        {asset?.description ? (
-          <p>
-            {asset.description} - {asset.type}
-          </p>
-        ) : null}
+        {asset?.description ? <p>{asset.description}</p> : null}
       </div>
     </Card>
   );

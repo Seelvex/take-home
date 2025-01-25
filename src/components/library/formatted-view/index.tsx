@@ -16,6 +16,7 @@ import { getTabs } from '@/lib/api/tabs';
 import KpiModal from '../modals/kpi';
 import LayoutModal from '../modals/layout';
 import AssetModal from '../modals/asset';
+import StoryboardModal from '../modals/storyboard';
 
 const FormattedView: React.FC = () => {
   const [activeTab, setActiveTab] = React.useState<string>();
@@ -84,8 +85,14 @@ const FormattedView: React.FC = () => {
         return <KpiModal asset={activeAsset} />;
       case 'layout':
         return <LayoutModal asset={activeAsset} />;
+      case 'storyboard':
+        return <StoryboardModal asset={activeAsset} />;
       default:
-        return <AssetModal asset={activeAsset} />;
+        return (
+          <AssetModal asset={activeAsset}>
+            <p>Type not recognized</p>
+          </AssetModal>
+        );
     }
   }, [activeAsset]);
 
@@ -137,7 +144,7 @@ const FormattedView: React.FC = () => {
           })
         : null}
 
-      <Modal isOpen={isOpen} title={activeAsset?.title} onClose={handleClick}>
+      <Modal isOpen={isOpen} onClose={handleClick}>
         {modalContent}
       </Modal>
     </React.Fragment>
