@@ -5,7 +5,7 @@ interface ButtonProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
   disabled?: boolean;
-  variant?: 'primary' | 'secondary' | 'danger' | 'icon';
+  variant?: 'primary' | 'secondary' | 'danger' | 'icon' | 'text';
   size?: 'sm' | 'md' | 'lg';
   icon?: React.ReactNode;
 }
@@ -34,6 +34,7 @@ const Button: React.FC<ButtonProps> = (props) => {
         'border border-black text-black-700 hover:bg-slate-200 focus:ring-black-500 focus:outline-none focus:ring-2',
       danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500',
       icon: 'bg-transparent text-black-700 focus:ring-black-500',
+      text: 'bg-transparent text-black-700 focus:ring-black-500',
     };
     const sizeStyles = {
       sm: 'px-3 py-1 text-sm',

@@ -4,10 +4,8 @@ import React from 'react';
 import useModal from '@/hooks/useModal';
 import useSearch from '@/hooks/useSearch';
 import { useQuery } from '@tanstack/react-query';
-import { AssetType, TabType } from '../asset/types';
+import { AssetType } from '../asset/types';
 import { getAssets } from '@/lib/api/assets';
-import MagnifyingGlassIcon from '@heroicons/react/24/solid/MagnifyingGlassIcon';
-import Input from '@/components/shared/input';
 import Tabs from '@/components/shared/tabs';
 import Section from '../section';
 import Asset from '../asset';
@@ -19,6 +17,7 @@ import AssetModal from '../modals/asset';
 import StoryboardModal from '../modals/storyboard';
 import Button from '@/components/shared/button';
 import { LinkIcon } from '@heroicons/react/24/solid';
+import LibrarySearchBar from '../search-bar';
 
 const FormattedView: React.FC = () => {
   const [activeTab, setActiveTab] = React.useState<string>();
@@ -112,23 +111,12 @@ const FormattedView: React.FC = () => {
     );
   }, [handleCopyLink]);
 
-  const handleInputChange = React.useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setSearchValue(e.target.value);
-    },
-    [setSearchValue],
-  );
-
   return (
     <React.Fragment>
-      <div>
-        <Input
-          icon={<MagnifyingGlassIcon className="h-5 w-5" />}
-          placeholder="Type to search..."
-          value={searchValue}
-          onChange={handleInputChange}
-        />
-      </div>
+      <LibrarySearchBar
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+      />
 
       {tabs && activeTab ? (
         <Tabs tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />
