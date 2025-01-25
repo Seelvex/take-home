@@ -59,6 +59,13 @@ const ASSETS: AssetType[] = [
         description: 'Desc item2',
       },
     ],
+    linkedEntities: [
+      {
+        type: 'kpi',
+        _id: '6794d6d4025446bd7728bf983232',
+        using: true,
+      },
+    ],
   },
   {
     _id: '6794d6d4025446bd7728bf983232',
@@ -89,25 +96,41 @@ const ASSETS: AssetType[] = [
   },
 ];
 
-export async function getAssets(filters: {
-  searchTerms?: string;
-  types: string[];
-  tags?: string[];
-}) {
-  let data = ASSETS.filter((asset) => filters.types.includes(asset.type));
+/**
+ * @todo implement dynamic filters
+ */
+export async function getAssets(
+  filters: Partial<AssetType> & { types?: string[]; ids?: string[] },
+) {
+  let data = ASSETS;
+
+  if (filters.types) {
+    data = data.filter((asset) => filters.types?.includes(asset.type));
+  }
+
   if (filters.tags) {
     data = data.filter((asset) =>
       filters.tags?.every((tag) => asset.tags?.includes(tag)),
     );
   }
-  if (filters.searchTerms) {
+
+  if (filters.ids) {
+    data = data.filter((asset) => filters.ids?.includes(asset._id));
+  }
+
+  if (filters.title) {
     return data.filter(
       (asset) =>
-        filters.searchTerms &&
+        filters.title &&
         asset.title
           .toLocaleLowerCase()
-          .includes(filters.searchTerms.toLocaleLowerCase()),
+          .includes(filters.title.toLocaleLowerCase()),
     );
   }
+
+  if (filters._id) {
+    return data.filter((asset) => asset._id === filters._id);
+  }
+
   return data;
 }

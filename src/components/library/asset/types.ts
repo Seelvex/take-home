@@ -6,6 +6,12 @@ interface BusinessQuestion {
   description: string;
 }
 
+interface LinkedEntity {
+  _id: string;
+  type: string;
+  using: boolean;
+}
+
 export interface AssetType {
   _id: string;
   title: string;
@@ -17,10 +23,13 @@ export interface AssetType {
   previewUrl?: string;
   url?: string;
   businessQuestions?: BusinessQuestion[];
+  linkedEntities?: LinkedEntity[];
 }
 
 export interface AssetProps {
   asset: AssetType;
+  className?: string;
+  selected?: boolean;
   onClick?: (id: string) => void;
 }
 

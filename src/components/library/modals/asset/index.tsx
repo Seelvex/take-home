@@ -29,7 +29,7 @@ const AssetModal: React.FC<AssetModalProps> = (props) => {
               className={`grid grid-cols-${asset.tags.length > 2 ? '3' : asset.tags.length} gap-2`}
             >
               {asset.tags.map((tag) => (
-                <Chip key={tag} label={tag} />
+                <Chip key={tag} label={`#${tag}`} />
               ))}
             </div>
           ) : null}
