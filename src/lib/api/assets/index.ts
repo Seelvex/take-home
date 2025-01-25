@@ -1,25 +1,34 @@
-import { cache } from 'react';
-import { firestore } from '@/lib/firebase';
-import { collection, getDocs, limit, query, where } from '@firebase/firestore';
-import { FirestoreQueryFilter } from '@/lib/global.types';
+'use server';
+
 import { AssetType } from '@/components/library/asset/types';
+import client, { DB_NAME } from '@/lib/mongodb';
 
-export const getAssets = cache(
-  async (filters: FirestoreQueryFilter<AssetType>[]) => {
-    const queryConstraints = filters.map((filter) => {
-      return where(filter.field, filter.operator, filter.value);
-    });
+const COLLECTION_NAME = 'assets';
 
-    const assetsRef = collection(firestore, 'assets');
-    const q = query(assetsRef, ...queryConstraints, limit(100));
-    const querySnapshot = await getDocs(q);
-
-    const assets = querySnapshot.docs.map(
-      (doc) => ({ id: doc.id, ...doc.data() }) as AssetType,
-    );
-
-    console.log('getAssets', assets);
-    if (!assets) return [];
-    return assets;
-  },
-);
+export async function getAssets(filters: {
+  searchTerms?: string;
+  types: string[];
+}) {
+  try {
+    const mongoClient = await client.connect();
+    const data = await mongoClient
+      .db(DB_NAME)
+      .collection<AssetType>(COLLECTION_NAME)
+      .find({
+        ...(filters?.searchTerms
+          ? { $text: { $search: filters.searchTerms } }
+          : {}),
+        type: { $in: filters.types },
+      })
+      .collation({ locale: 'en', strength: 2 })
+      .limit(100)
+      .toArray();
+    return data.map((asset) => ({
+      ...asset,
+      _id: asset._id.toString(),
+    }));
+  } catch (e) {
+    console.error(e);
+    return [];
+  }
+}

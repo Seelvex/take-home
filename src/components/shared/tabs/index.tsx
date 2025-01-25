@@ -1,4 +1,11 @@
-import { TabsProps } from './types';
+import { TabType } from '@/components/library/asset/types';
+
+export interface TabsProps {
+  tabs: TabType[];
+  activeTab: TabType['id'];
+  onTabChange: (id: TabType['id']) => void;
+  className?: string;
+}
 
 const Tabs: React.FC<TabsProps> = ({
   tabs,

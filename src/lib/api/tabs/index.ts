@@ -1,23 +1,26 @@
-import { cache } from 'react';
-import { firestore } from '@/lib/firebase';
-import { collection, getDocs, limit, query, where } from '@firebase/firestore';
-import { FirestoreQueryFilter } from '@/lib/global.types';
-import { Tab } from '@/components/shared/tabs/types';
+'use server';
 
-export const getTabs = cache(async (filters: FirestoreQueryFilter<Tab>[]) => {
-  const queryConstraints = filters.map((filter) => {
-    return where(filter.field, filter.operator, filter.value);
-  });
+import { TabType } from '@/components/library/asset/types';
+import client, { DB_NAME } from '@/lib/mongodb';
 
-  const tabsRef = collection(firestore, 'tabs');
-  const q = query(tabsRef, ...queryConstraints, limit(100));
-  const querySnapshot = await getDocs(q);
+const COLLECTION_NAME = 'tabs';
 
-  const tabs = querySnapshot.docs.map(
-    (doc) => ({ id: doc.id, ...doc.data() }) as Tab,
-  );
-
-  console.log('getTabs', tabs);
-  if (!tabs) return [];
-  return tabs.sort((a, b) => a.label.localeCompare(b.label));
-});
+export async function getTabs() {
+  try {
+    const mongoClient = await client.connect();
+    const data = await mongoClient
+      .db(DB_NAME)
+      .collection<TabType>(COLLECTION_NAME)
+      .find({})
+      .limit(10)
+      .toArray();
+    console.log('getTabs', data);
+    return data.map((tab) => ({
+      ...tab,
+      _id: tab._id.toString(),
+    }));
+  } catch (e) {
+    console.error(e);
+    return [];
+  }
+}

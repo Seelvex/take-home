@@ -3,12 +3,12 @@ import { AssetProps } from './types';
 import Card from '@/components/shared/card';
 
 const Asset: React.FC<AssetProps> = (props) => {
-  const { id, title, description, onClick } = props;
+  const { asset, onClick } = props;
 
   const handleClick = React.useCallback(() => {
     if (typeof onClick !== 'function') return;
-    onClick(id);
-  }, [id, onClick]);
+    onClick(asset?._id);
+  }, [asset?._id, onClick]);
 
   return (
     <Card className="gap-4 max-h-52" onClick={handleClick}>
@@ -16,8 +16,8 @@ const Asset: React.FC<AssetProps> = (props) => {
         <span>i</span>
       </div>
       <div className="place-content-center">
-        <p className="font-bold">{title}</p>
-        {description ? <p>{description}</p> : null}
+        <p className="font-bold">{asset?.title}</p>
+        {asset?.description ? <p>{asset.description}</p> : null}
       </div>
     </Card>
   );

@@ -1,12 +1,19 @@
-import React from 'react';
+import { SectionType } from '../section/types';
 
 export interface AssetType {
-  id: string;
+  _id: string;
   title: string;
   description?: string;
   type: string;
 }
 
-export interface AssetProps extends AssetType {
+export interface AssetProps {
+  asset: AssetType;
   onClick?: (id: string) => void;
+}
+
+export interface TabType {
+  id: string;
+  label: string;
+  sections: SectionType[];
 }
