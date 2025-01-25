@@ -30,7 +30,7 @@ const LayoutModal: React.FC<LayoutModalProps> = (props) => {
   return (
     <AssetModal asset={asset}>
       <div className="flex flex-col gap-4 mb-4 w-full items-center">
-        <div className="flex justify-between w-2/3 p-4">
+        <div className="flex justify-between md:w-4/5 w-full p-4">
           {statisticsComponent}
         </div>
 

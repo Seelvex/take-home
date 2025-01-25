@@ -2,20 +2,21 @@ import React from 'react';
 
 interface DividerProps {
   orientation?: 'horizontal' | 'vertical';
+  className?: string;
 }
 
 const Divider: React.FC<DividerProps> = (props) => {
-  const { orientation = 'horizontal' } = props;
+  const { orientation = 'horizontal', className } = props;
 
-  const className = React.useMemo(() => {
+  const dividerClassName = React.useMemo(() => {
     if (orientation === 'horizontal') {
-      return 'w-full h-[1px] bg-slate-200';
+      return `w-full h-[1px] bg-slate-200 ${className}`;
     }
 
-    return 'w-[1px] bg-slate-200';
-  }, [orientation]);
+    return `w-[1px] bg-slate-200 ${className}`;
+  }, [className, orientation]);
 
-  return <div className={className}></div>;
+  return <div className={dividerClassName}></div>;
 };
 
 export default Divider;

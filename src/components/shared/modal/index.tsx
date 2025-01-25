@@ -10,6 +10,7 @@ interface ModalProps {
   description?: React.ReactNode;
   className?: string;
   extraTopActions?: React.ReactNode;
+  bottomActions?: React.ReactNode;
 }
 
 const Modal: React.FC<ModalProps> = (props) => {
@@ -21,6 +22,7 @@ const Modal: React.FC<ModalProps> = (props) => {
     className = '',
     description,
     extraTopActions,
+    bottomActions,
   } = props;
 
   const handleClick = React.useCallback(
@@ -39,7 +41,7 @@ const Modal: React.FC<ModalProps> = (props) => {
       onClick={handleClick}
     >
       <div
-        className={`bg-white rounded-lg shadow-lg max-w-md w-full p-2 relative min-w-[50%] max-h-[90%] ${className}`}
+        className={`bg-white rounded-lg shadow-lg xl:md:max-w-[50%] max-w-[95%] w-full p-2 relative min-w-[50%] max-h-[95%] overflow-auto ${className}`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="place-items-center">
@@ -56,6 +58,8 @@ const Modal: React.FC<ModalProps> = (props) => {
           {description ? <p>{description}</p> : null}
 
           <div className="mt-2 w-full overflow-auto">{children}</div>
+
+          <div className="flex justify-end p-2 w-full">{bottomActions}</div>
         </div>
       </div>
     </div>

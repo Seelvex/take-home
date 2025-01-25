@@ -119,11 +119,6 @@ const FormattedView: React.FC = () => {
         onClick: handleCopyLink,
         icon: <LinkIcon className="h-5 w-5" />,
       },
-      {
-        label: 'Toggle Favourite',
-        onClick: handleToggleFavourite,
-        icon: <StarIcon className="h-5 w-5" />,
-      },
     ];
     return items.map((item) => (
       <Button
@@ -133,7 +128,26 @@ const FormattedView: React.FC = () => {
         icon={item.icon}
       />
     ));
-  }, [handleCopyLink, handleToggleFavourite]);
+  }, [handleCopyLink]);
+
+  const modalBottomActions = React.useMemo(() => {
+    const items = [
+      {
+        label: 'Favourite Item',
+        onClick: handleToggleFavourite,
+        icon: <StarIcon className="h-5 w-5" />,
+      },
+    ];
+    return items.map((item) => (
+      <Button
+        key={item.label}
+        label={item.label}
+        onClick={item.onClick}
+        icon={item.icon}
+        className="w-full"
+      />
+    ));
+  }, [handleToggleFavourite]);
 
   return (
     <React.Fragment>
@@ -176,6 +190,7 @@ const FormattedView: React.FC = () => {
         isOpen={isOpen}
         onClose={handleClick}
         extraTopActions={modalExtraTopActions}
+        bottomActions={modalBottomActions}
       >
         {modalContent}
       </Modal>
