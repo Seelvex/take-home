@@ -17,7 +17,11 @@ const Asset: React.FC<AssetProps> = (props) => {
       </div>
       <div className="place-content-center">
         <p className="font-bold">{asset?.title}</p>
-        {asset?.description ? <p>{asset.description}</p> : null}
+        {asset?.description ? (
+          <p>
+            {asset.description} - {asset.type}
+          </p>
+        ) : null}
       </div>
     </Card>
   );

@@ -112,24 +112,29 @@ const FormattedView: React.FC = () => {
       ) : null}
 
       {selectedTab?.sections
-        ? selectedTab.sections.map((s) => (
-            <Section key={s.id} {...s}>
-              {assetsListLoading ? 'Loading...' : null}
-              {assetsList && assetsList.length > 0 ? (
-                <div className="flex gap-4 md:flex-row flex-col">
-                  {assetsList?.map((asset) => (
-                    <Asset
-                      key={asset._id.toString()}
-                      asset={asset}
-                      onClick={() => handleAssetClick(asset)}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <p>No data, try different filters</p>
-              )}
-            </Section>
-          ))
+        ? selectedTab.sections.map((s) => {
+            const filteredAssets = assetsList?.filter((a) =>
+              s.allowedTypes.includes(a.type),
+            );
+            return (
+              <Section key={s.id} {...s}>
+                {assetsListLoading ? 'Loading...' : null}
+                {filteredAssets && filteredAssets.length > 0 ? (
+                  <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
+                    {filteredAssets?.map((asset) => (
+                      <Asset
+                        key={asset._id.toString()}
+                        asset={asset}
+                        onClick={() => handleAssetClick(asset)}
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <p>No data, try different filters</p>
+                )}
+              </Section>
+            );
+          })
         : null}
 
       <Modal isOpen={isOpen} title={activeAsset?.title} onClose={handleClick}>

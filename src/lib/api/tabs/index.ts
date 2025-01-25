@@ -29,7 +29,13 @@ const TABS: TabType[] = [
         id: '1',
         title: 'Featured',
         description: 'desc featured',
-        allowedTypes: ['layout', 'kpi'],
+        allowedTypes: ['layout', 'kpi', 'storyboard'],
+      },
+      {
+        id: '2',
+        title: 'Trending KPIs',
+        description: 'desc Trending',
+        allowedTypes: ['kpi'],
       },
     ],
   },
@@ -38,6 +44,30 @@ const TABS: TabType[] = [
     label: 'KPI',
     sections: [
       { id: '1', title: 'KPI', description: 'desc KPI', allowedTypes: ['kpi'] },
+    ],
+  },
+  {
+    _id: '6794edf4025446bd7728bf9d',
+    label: 'Layout',
+    sections: [
+      {
+        id: '1',
+        title: 'Layout',
+        description: 'desc Layout',
+        allowedTypes: ['layout'],
+      },
+    ],
+  },
+  {
+    _id: '6794edf4025446bd7728bf9e',
+    label: 'Storyboard',
+    sections: [
+      {
+        id: '1',
+        title: 'Storyboard',
+        description: 'desc Storyboard',
+        allowedTypes: ['storyboard'],
+      },
     ],
   },
 ];

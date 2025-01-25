@@ -50,6 +50,18 @@ const ASSETS: AssetType[] = [
     description: 'Desc item3',
     type: 'layout',
   },
+  {
+    _id: '6794dbae025446bd7728bf9b',
+    title: 'Title4',
+    description: 'Desc item4',
+    type: 'layout',
+  },
+  {
+    _id: '6794dbae025446bd7728bf9c',
+    title: 'Title5',
+    description: 'Desc item5',
+    type: 'kpi',
+  },
 ];
 
 export async function getAssets(filters: {
