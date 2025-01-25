@@ -12,7 +12,7 @@ export default async function Library() {
           icon={<FolderArrowDownIcon className="h-5 w-5" />}
         />
       </div>
-      <div className="flex flex-col gap-9 w-full lg:w-3/5 md:w-3/4">
+      <div className="flex flex-col gap-9 w-full xl:w-3/5 md:w-3/4">
         <div className="flex flex-col text-center gap-8 mb-6">
           <h2 className="text-5xl font-bold">Library</h2>
           <p className="text-lg">Description library</p>
