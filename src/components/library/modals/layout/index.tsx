@@ -17,9 +17,6 @@ interface LayoutModalProps {
 const LayoutModal: React.FC<LayoutModalProps> = (props) => {
   const { asset } = props;
 
-  /**
-   * Fetch asset linked entities (full data) using the asset linked entities ids
-   */
   const { data: linkedEntities } = useQuery({
     queryKey: ['asset', asset.linkedEntities],
     queryFn: () =>
@@ -27,9 +24,6 @@ const LayoutModal: React.FC<LayoutModalProps> = (props) => {
     enabled: !!asset.linkedEntities,
   });
 
-  /**
-   * metrics component to display key value pairs
-   */
   const metricsComponent = React.useMemo(() => {
     if (!asset.metrics) return null;
 

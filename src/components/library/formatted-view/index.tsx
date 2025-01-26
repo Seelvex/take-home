@@ -4,12 +4,13 @@ import React from 'react';
 import useModal from '@/hooks/useModal';
 import useSearch from '@/hooks/useSearch';
 import { useQuery } from '@tanstack/react-query';
-import { AssetType, TabType } from '../asset/types';
+import { AssetType } from '../asset/types';
 import { getAssets } from '@/lib/api/assets';
 import Tabs from '@/components/shared/tabs';
 import Section from '../section';
 import Asset from '../asset';
 import Modal from '@/components/shared/modal';
+import { getTabs } from '@/lib/api/tabs';
 import KpiModal from '../modals/kpi';
 import LayoutModal from '../modals/layout';
 import AssetModal from '../modals/asset';
@@ -21,17 +22,11 @@ import LibrarySearchBar from '../search-bar';
 import { useRequestAccessContext } from '@/hooks/useRequestAccessContext';
 import RequestAccessModal from '../shared/RequestAccessModal';
 
-interface FormattedViewProps {
-  tabs: TabType[];
-}
-
 /**
  * Formatted view component
  * - Used to display library content depending on the filters applied to the page
  */
-const FormattedView: React.FC<FormattedViewProps> = (props) => {
-  const { tabs } = props;
-
+const FormattedView: React.FC = () => {
   const [activeTab, setActiveTab] = React.useState<string>();
   const [activeAsset, setActiveAsset] = React.useState<AssetType>();
 
@@ -46,10 +41,10 @@ const FormattedView: React.FC<FormattedViewProps> = (props) => {
   /**
    * fetch tabs
    */
-  /* const { data: tabs } = useQuery({
+  const { data: tabs } = useQuery({
     queryKey: ['library-tabs'],
     queryFn: getTabs,
-  }); */
+  });
 
   /**
    * set active tab on first load of the tabs
@@ -95,7 +90,7 @@ const FormattedView: React.FC<FormattedViewProps> = (props) => {
   const { data: assetsList, isLoading: assetsListLoading } = useQuery({
     queryKey: ['library-assets-by-tab', currentAssetsDataTypes, searchValue],
     queryFn: async () => {
-      const payload: { searchTerms?: string; types?: string[] } = {
+      const payload: { searchTerms?: string; types: string[] } = {
         types: [],
       };
       if (currentAssetsDataTypes) {

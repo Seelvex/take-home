@@ -1,17 +1,11 @@
 import React from 'react';
 import FormattedView from '@/components/library/formatted-view';
 import LibraryHeader from '@/components/library/header';
-import { getTabs } from '@/lib/api/tabs';
 
 /**
  * Library page
  */
 export default async function Library() {
-  /**
-   * fetch tabs
-   */
-  const tabs = await getTabs();
-
   return (
     <main className="min-h-screen p-8 flex flex-col items-center gap-9">
       <LibraryHeader />
@@ -22,7 +16,7 @@ export default async function Library() {
           <p className="text-lg">Description library</p>
         </div>
 
-        <FormattedView tabs={tabs} />
+        <FormattedView />
       </div>
     </main>
   );
