@@ -7,9 +7,9 @@
     "type": "layout",
     "tags": [
       "featured",
+      "top-pick",
       "modern",
-      "responsive",
-      "dashboard"
+      "responsive"
     ],
     "metrics": {
       "Used": 120,
@@ -52,7 +52,8 @@
     "type": "kpi",
     "tags": [
       "trending",
-      "finance"
+      "finance",
+      "top-pick"
     ],
     "url": "https://example.com/kpi/revenue",
     "metrics": {
@@ -98,36 +99,135 @@
     ]
   },
   {
-    "_id": "6794d6d4025446bd7728bf98",
-    "title": "Project Timeline Storyboard",
-    "subTitle": "Visualize project milestones effectively",
-    "description": "A storyboard template to plan, track, and present project timelines with clarity.",
-    "type": "storyboard",
-    "url": "https://example.com/storyboard/project-timeline",
+    "_id": "8475e6d9035432cd8829af12",
+    "title": "E-commerce Product Catalog",
+    "subTitle": "Organize and showcase products",
+    "description": "A layout designed for online stores to display their products attractively and effectively.",
+    "type": "layout",
+    "tags": [
+      "ecommerce",
+      "catalog",
+      "products",
+      "new",
+      "featured"
+    ],
+    "metrics": {
+      "Used": 320,
+      "Type": "template",
+      "Pages no.": 7,
+      "Last Updated": "2025-01-15"
+    },
+    "url": "https://example.com/layout/product-catalog",
+    "previewUrl": "https://example.com/layout/product-catalog/preview",
+    "businessQuestions": [
+      {
+        "id": "1",
+        "title": "How does this layout boost sales?",
+        "description": "The clean design enhances product visibility, encouraging customers to explore and purchase."
+      },
+      {
+        "id": "2",
+        "title": "Is the layout mobile-friendly?",
+        "description": "Yes, the responsive design ensures compatibility with all devices."
+      }
+    ],
     "linkedEntities": [
       {
         "type": "kpi",
-        "_id": "6794d6d4025446bd7728bf983232",
+        "_id": "8475e6d9035432cd8829af12kpi",
+        "using": true
+      }
+    ]
+  },
+  {
+    "_id": "8475e6d9035432cd8829af12kpi",
+    "title": "Customer Retention KPI",
+    "subTitle": "Monitor returning customer rates",
+    "description": "A key performance indicator to measure the percentage of customers returning after their first purchase.",
+    "type": "kpi",
+    "tags": [
+      "customer",
+      "retention",
+      "favorites",
+      "trending"
+    ],
+    "url": "https://example.com/kpi/customer-retention",
+    "metrics": {
+      "Retention Rate": "85%",
+      "New Customers (Last Month)": 1500,
+      "Returning Customers (Last Month)": 1275
+    },
+    "businessQuestions": [
+      {
+        "id": "1",
+        "title": "What is the current retention rate?",
+        "description": "The KPI provides a detailed breakdown of retention trends."
+      },
+      {
+        "id": "2",
+        "title": "How can retention be improved?",
+        "description": "Analyze customer behavior and identify opportunities for improvement."
+      }
+    ],
+    "calculations": {
+      "Retention Rate": "Calculated as (Returning Customers / Total Customers) * 100.",
+      "New Customers": "Count of customers making their first purchase.",
+      "Returning Customers": "Count of customers making repeat purchases."
+    },
+    "visuals": [
+      "pie chart",
+      "bar graph",
+      "heatmap"
+    ],
+    "affiliateList": [
+      {
+        "_id": "1",
+        "title": "Loyalty Program Manager",
+        "description": "A tool for creating and managing customer loyalty programs.",
+        "score": 4.7
+      },
+      {
+        "_id": "2",
+        "title": "Customer Insight Analyzer",
+        "description": "Gain deeper insights into customer behavior and trends.",
+        "score": 4.4
+      }
+    ]
+  },
+  {
+    "_id": "9576df90125446bd7728cf20",
+    "title": "Event Planning Storyboard",
+    "subTitle": "Organize and execute successful events",
+    "description": "A storyboard designed to help you map out every stage of event planning, from concept to execution.",
+    "type": "storyboard",
+    "url": "https://example.com/storyboard/event-planning",
+    "tags": [
+      "product"
+    ],
+    "linkedEntities": [
+      {
+        "type": "kpi",
+        "_id": "9576df90125446bd7728cf20kpi",
         "using": true
       },
       {
         "type": "layout",
-        "_id": "6794d6d4025446bd7728bf98",
+        "_id": "8475e6d9035432cd8829af12",
         "using": false
       }
     ],
     "affiliateList": [
       {
         "_id": "1",
-        "title": "Project Planner Deluxe",
-        "description": "An advanced tool for detailed project planning.",
+        "title": "Event Organizer Pro",
+        "description": "A powerful tool to manage event logistics.",
         "score": 4.8
       },
       {
         "_id": "2",
-        "title": "Milestone Tracker",
-        "description": "A simple and efficient way to track project milestones.",
-        "score": 4.2
+        "title": "Venue Finder",
+        "description": "Easily locate and book venues for your events.",
+        "score": 4.5
       }
     ]
   }

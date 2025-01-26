@@ -1,72 +1,159 @@
 [
   {
-    "_id": "6794cb08025446bd7728bf97",
+    "_id": "8475cb08025446bd7728af12",
     "label": "Featured",
     "sections": [
       {
         "id": "1",
-        "title": "Featured",
-        "description": "desc featured",
+        "title": "Top Picks",
+        "description": "Handpicked items that stand out for their quality and popularity.",
         "allowedTypes": [
           "layout",
           "kpi",
           "storyboard"
         ],
         "tags": [
-          "featured"
+          "top-pick",
+          "popular",
+          "recommended"
         ]
       },
       {
         "id": "2",
-        "title": "Trending KPIs",
-        "description": "desc Trending",
+        "title": "Recently Updated",
+        "description": "Items that have been updated with the latest features and improvements.",
         "allowedTypes": [
-          "kpi"
+          "layout",
+          "kpi",
+          "storyboard"
         ],
         "tags": [
-          "trending"
+          "updated",
+          "new"
+        ]
+      },
+      {
+        "id": "3",
+        "title": "User Favorites",
+        "description": "The most favorited items by users in the past month.",
+        "allowedTypes": [
+          "layout",
+          "kpi",
+          "storyboard"
+        ],
+        "tags": [
+          "favorites",
+          "user-choice"
         ]
       }
     ]
   },
   {
-    "_id": "6794edf4025446bd7728bf9c",
+    "_id": "8475edf4025446bd7728af13",
     "label": "KPI",
     "sections": [
       {
         "id": "1",
-        "title": "KPI",
-        "description": "desc KPI",
+        "title": "Financial KPIs",
+        "description": "Track the financial performance of your business.",
         "allowedTypes": [
           "kpi"
+        ],
+        "tags": [
+          "finance",
+          "profit",
+          "growth",
+          "trending"
+        ]
+      },
+      {
+        "id": "2",
+        "title": "Operational KPIs",
+        "description": "Measure the efficiency of your business operations.",
+        "allowedTypes": [
+          "kpi"
+        ],
+        "tags": [
+          "operations",
+          "efficiency",
+          "retention",
+          "loyalty"
         ]
       }
     ]
   },
   {
-    "_id": "6794edf4025446bd7728bf9d",
-    "label": "Layout",
+    "_id": "8475edf4025446bd7728af14",
+    "label": "Layouts",
     "sections": [
       {
         "id": "1",
-        "title": "Layout",
-        "description": "desc Layout",
+        "title": "Modern Layouts",
+        "description": "Layouts designed for modern and responsive applications.",
         "allowedTypes": [
           "layout"
+        ],
+        "tags": [
+          "modern",
+          "responsive",
+          "dashboard",
+          "ecommerce",
+          "catalog",
+          "products"
+        ]
+      },
+      {
+        "id": "2",
+        "title": "Classic Layouts",
+        "description": "Traditional layouts with a focus on simplicity and clarity.",
+        "allowedTypes": [
+          "layout"
+        ],
+        "tags": [
+          "classic",
+          "simple"
         ]
       }
     ]
   },
   {
-    "_id": "6794edf4025446bd7728bf9e",
-    "label": "Storyboard",
+    "_id": "8475edf4025446bd7728af15",
+    "label": "Storyboards",
     "sections": [
       {
         "id": "1",
-        "title": "Storyboard",
-        "description": "desc Storyboard",
+        "title": "Marketing Campaigns",
+        "description": "Storyboards to plan and visualize marketing campaigns.",
         "allowedTypes": [
           "storyboard"
+        ],
+        "tags": [
+          "marketing",
+          "campaigns"
+        ]
+      },
+      {
+        "id": "2",
+        "title": "Project Timelines",
+        "description": "Templates for tracking and presenting project milestones.",
+        "allowedTypes": [
+          "storyboard"
+        ],
+        "tags": [
+          "project",
+          "timeline"
+        ]
+      },
+      {
+        "id": "3",
+        "title": "Product Launches",
+        "description": "Storyboard ideas for planning successful product launches.",
+        "allowedTypes": [
+          "storyboard"
+        ],
+        "tags": [
+          "product",
+          "launch"
         ]
       }
     ]

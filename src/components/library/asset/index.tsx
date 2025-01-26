@@ -21,7 +21,7 @@ const Asset: React.FC<AssetProps> = (props) => {
 
   return (
     <Card
-      className={`gap-4 max-h-52 ${className} ${selected ? 'bg-slate-100' : ''}`}
+      className={`gap-4 max-h-52 cursor-pointer ${className} ${selected ? 'bg-slate-100' : ''}`}
       onClick={handleClick}
     >
       <SquareAvatar

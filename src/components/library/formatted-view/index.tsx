@@ -147,7 +147,10 @@ const FormattedView: React.FC = () => {
    */
   const handleCopyLink = React.useCallback(() => {
     if (activeAsset?.url) {
-      navigator.clipboard.writeText(activeAsset?.url);
+      const baseUrl = window.location.origin;
+      navigator.clipboard.writeText(
+        `${baseUrl}/${activeAsset.type}/${activeAsset._id}`,
+      );
     }
   }, [activeAsset]);
 
@@ -241,7 +244,7 @@ const FormattedView: React.FC = () => {
                     ))}
                   </div>
                 ) : (
-                  <p>No data, try different filters</p>
+                  <p className='text-slate-500'>No data, try different filters</p>
                 )}
               </Section>
             );
