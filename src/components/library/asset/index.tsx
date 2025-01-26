@@ -23,7 +23,10 @@ const Asset: React.FC<AssetProps> = (props) => {
       className={`gap-4 max-h-52 ${className} ${selected ? 'bg-slate-100' : ''}`}
       onClick={handleClick}
     >
-      <SquareAvatar component={asset?.type} />
+      <SquareAvatar
+        component={asset?.type?.[0]?.toLocaleUpperCase()}
+        className="text-slate-500 font-bold text-3xl"
+      />
       <div className="place-content-center">
         <p className="font-bold">{asset?.title}</p>
         {asset?.description ? <p>{asset.description}</p> : null}

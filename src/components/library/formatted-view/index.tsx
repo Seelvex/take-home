@@ -77,7 +77,7 @@ const FormattedView: React.FC = () => {
    * handle asset click
    */
   const handleAssetClick = React.useCallback(
-    (asset: AssetType) => {
+    (asset?: AssetType) => {
       setActiveAsset(asset);
       handleClickAssetModal();
     },
@@ -194,6 +194,16 @@ const FormattedView: React.FC = () => {
     ));
   }, [handleToggleFavourite]);
 
+  /**
+   * handle close request access modal with cleanup
+   */
+  const handleCloseRequestAccessModal = React.useCallback(() => {
+    if (activeAsset) {
+      setActiveAsset(undefined);
+    }
+    handleClickRequestAccessModal();
+  }, [activeAsset, handleClickRequestAccessModal]);
+
   return (
     <React.Fragment>
       <LibrarySearchBar
@@ -240,7 +250,7 @@ const FormattedView: React.FC = () => {
 
       <Modal
         isOpen={isOpenAssetModal}
-        onClose={handleClickAssetModal}
+        onClose={() => handleAssetClick()}
         extraTopActions={modalExtraTopActions}
         bottomActions={modalBottomActions}
       >
@@ -249,7 +259,7 @@ const FormattedView: React.FC = () => {
 
       <Modal
         isOpen={isOpenRequestAccessModal}
-        onClose={handleClickRequestAccessModal}
+        onClose={handleCloseRequestAccessModal}
       >
         <RequestAccessModal tab={selectedTab} asset={activeAsset} />
       </Modal>

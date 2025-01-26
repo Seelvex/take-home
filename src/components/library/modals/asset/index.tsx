@@ -14,7 +14,10 @@ const AssetModal: React.FC<AssetModalProps> = (props) => {
 
   return (
     <div className="flex flex-col gap-4 mb-4 w-full items-center px-4">
-      <SquareAvatar component={asset.type} className="max-w-[80px]" />
+      <SquareAvatar
+        component={asset?.type?.[0]?.toLocaleUpperCase()}
+        className="text-slate-500 font-bold text-2xl max-w-[80px]"
+      />
 
       <div className="flex flex-col gap-6 items-center">
         <div className="flex flex-col gap-2 items-center">

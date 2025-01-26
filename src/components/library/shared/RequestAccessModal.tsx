@@ -3,6 +3,7 @@ import { AssetType, TabType } from '../asset/types';
 import TextArea from '@/components/shared/input/TextArea';
 import Button from '@/components/shared/button';
 import Chip from '@/components/shared/chip';
+import { useRequestAccessContext } from '@/hooks/useRequestAccessContext';
 
 interface RequestAccessModalProps {
   tab?: TabType;
@@ -16,9 +17,16 @@ interface RequestAccessModalProps {
 const RequestAccessModal: React.FC<RequestAccessModalProps> = (props) => {
   const { tab, asset } = props;
 
-  const handleRequestAccess = React.useCallback(() => {
-    console.log('handleRequestAccess', tab, asset);
-  }, [asset, tab]);
+  const [reason, setReason] = React.useState('');
+  
+  const { handleRequestAccess } = useRequestAccessContext();
+
+  /**
+   * Handle click request access
+   */
+  const handleClick = React.useCallback(() => {
+    handleRequestAccess(tab, asset, reason);
+  }, [asset, handleRequestAccess, reason, tab]);
 
   return (
     <div className="flex flex-col gap-6 min-h-[50vh] px-4">
@@ -42,8 +50,10 @@ const RequestAccessModal: React.FC<RequestAccessModalProps> = (props) => {
           className="w-full"
           placeholder="Reason for request"
           rows={4}
+          value={reason}
+          onChange={(e) => setReason(e.target.value)}
         />
-        <Button label="Request Access" onClick={handleRequestAccess} />
+        <Button label="Request Access" onClick={handleClick} />
       </div>
     </div>
   );
