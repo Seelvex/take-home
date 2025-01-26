@@ -11,7 +11,7 @@ const Section: React.FC<React.PropsWithChildren<SectionType>> = (props) => {
   return (
     <div className="flex flex-col gap-8 w-full">
       <div className="flex flex-col gap-2">
-        <h3 className="text-3xl bold">{title}</h3>
+        <h3 className="text-3xl font-semibold">{title}</h3>
         {description ? <p>{description}</p> : null}
       </div>
 
