@@ -31,13 +31,13 @@ const RequestAccessModal: React.FC<RequestAccessModalProps> = (props) => {
   return (
     <div className="flex flex-col gap-6 min-h-[50vh] px-4">
       <h3 className="text-3xl font-bold text-center">Request Access</h3>
-      <div className="flex gap-4 w-full">
+      <div className="flex gap-4 w-full md:flex-row flex-col">
         <p className="text-lg">
           You are requesting access to the following {asset?.type || 'tab'}:
         </p>
         {asset?.title ? (
-          <div className="flex gap-2">
-            <p className="text-lg bold">{asset?.title}</p>
+          <div className="flex gap-2 items-center">
+            <p className="text-lg font-bold">{asset?.title}</p>
             <Chip label={asset?.type || ''} />
           </div>
         ) : (
