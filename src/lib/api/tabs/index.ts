@@ -1,7 +1,10 @@
 import { TabType } from '@/components/library/asset/types';
 import tabs from '@/lib/assets/tabs.json';
 
-/* export async function getTabs() {
+/* 
+const COLLECTION_NAME = 'tabs';
+
+export async function getTabs() {
   try {
     const mongoClient = await client.connect();
     const data = await mongoClient
