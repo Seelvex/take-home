@@ -10,6 +10,10 @@ interface LayoutModalProps {
   asset: AssetType;
 }
 
+/**
+ * Layout modal component
+ * Used to display layout specific information
+ */
 const LayoutModal: React.FC<LayoutModalProps> = (props) => {
   const { asset } = props;
 

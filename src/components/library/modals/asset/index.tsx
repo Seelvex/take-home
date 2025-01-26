@@ -6,6 +6,9 @@ interface AssetModalProps extends React.PropsWithChildren {
   asset: AssetType;
 }
 
+/**
+ * Asset modal component used as a base to display generic asset information
+ */
 const AssetModal: React.FC<AssetModalProps> = (props) => {
   const { asset, children } = props;
 

@@ -16,6 +16,9 @@ const LibrarySearchBar: React.FC<LibrarySearchBarProps> = (props) => {
 
   const { recentSearches } = useSearch();
 
+  /**
+   * Handle input change
+   */
   const handleInputChange = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setSearchValue(e.target.value);
@@ -23,6 +26,9 @@ const LibrarySearchBar: React.FC<LibrarySearchBarProps> = (props) => {
     [setSearchValue],
   );
 
+  /**
+   * Handle select search
+   */
   const handleSelectSearch = React.useCallback(
     (search: string) => {
       setSearchValue(search);
@@ -32,7 +38,7 @@ const LibrarySearchBar: React.FC<LibrarySearchBarProps> = (props) => {
   );
 
   /**
-   * @todo implement logic to clear recent searches
+   * @todo implement logic to clear recent searches on db
    */
   const handleClearSearches = React.useCallback(() => {
     setShowRecent(false);

@@ -3,9 +3,16 @@ import { AssetProps } from './types';
 import Card from '@/components/shared/card';
 import SquareAvatar from '@/components/shared/square-avatar';
 
+/**
+ * Asset component
+ * Used to display generic asset information
+ */
 const Asset: React.FC<AssetProps> = (props) => {
   const { asset, onClick, className, selected } = props;
 
+  /**
+   * Handle click event
+   */
   const handleClick = React.useCallback(() => {
     if (typeof onClick !== 'function') return;
     onClick(asset?._id);

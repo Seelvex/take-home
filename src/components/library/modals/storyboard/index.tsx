@@ -13,9 +13,16 @@ interface StoryboardModalProps {
   asset: AssetType;
 }
 
+/**
+ * Storyboard modal component
+ * Used to display storyboard specific information
+ */
 const StoryboardModal: React.FC<StoryboardModalProps> = (props) => {
   const { asset } = props;
 
+  /**
+   * Fetch asset linked entities (full data) using the asset linked entities ids
+   */
   const { data: linkedEntities } = useQuery({
     queryKey: ['asset', asset.linkedEntities],
     queryFn: () =>
@@ -23,6 +30,9 @@ const StoryboardModal: React.FC<StoryboardModalProps> = (props) => {
     enabled: !!asset.linkedEntities,
   });
 
+  /**
+   * @todo request access
+   */
   const handleRequestAccess = React.useCallback(() => {
     console.log('handleRequestAccess', asset);
   }, [asset]);

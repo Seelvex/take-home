@@ -1,6 +1,10 @@
 import { SectionType } from './types';
 import React from 'react';
 
+/**
+ * Section component
+ * Used to display content in a section
+ */
 const Section: React.FC<React.PropsWithChildren<SectionType>> = (props) => {
   const { title, description, children } = props;
 

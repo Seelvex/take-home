@@ -1,5 +1,9 @@
 import React from 'react';
 
+/**
+ * useModal hook
+ * Used to handle modal state
+ */
 const useModal = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 

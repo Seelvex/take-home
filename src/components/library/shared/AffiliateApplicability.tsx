@@ -4,6 +4,10 @@ interface AffiliateApplicabilityProps {
   affiliate: Affiliate;
 }
 
+/**
+ * AffiliateApplicability component
+ * Used to display affiliate applicability information
+ */
 const AffiliateApplicability: React.FC<AffiliateApplicabilityProps> = (
   props,
 ) => {

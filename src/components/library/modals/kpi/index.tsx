@@ -6,6 +6,10 @@ interface KpiModalProps {
   asset: AssetType;
 }
 
+/**
+ * KPI modal component
+ * Used to display KPI specific information
+ */
 const KpiModal: React.FC<KpiModalProps> = (props) => {
   const { asset } = props;
 

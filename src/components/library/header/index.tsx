@@ -4,6 +4,9 @@ import Button from '@/components/shared/button';
 import FolderArrowDownIcon from '@heroicons/react/24/solid/FolderArrowDownIcon';
 import React from 'react';
 
+/**
+ * Library page header component
+ */
 const LibraryHeader: React.FC = () => {
   /**
    * @todo implement logic to handle request

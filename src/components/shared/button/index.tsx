@@ -10,10 +10,6 @@ interface ButtonProps {
   icon?: React.ReactNode;
 }
 
-/**
- *
- * @todo fix icon
- */
 const Button: React.FC<ButtonProps> = (props) => {
   const {
     variant = 'primary',

@@ -20,6 +20,10 @@ import LinkIcon from '@heroicons/react/24/solid/LinkIcon';
 import BookmarkIcon from '@heroicons/react/24/solid/BookmarkIcon';
 import LibrarySearchBar from '../search-bar';
 
+/**
+ * Formatted view component
+ * Used to display library content depending on the filters applied to the page
+ */
 const FormattedView: React.FC = () => {
   const [activeTab, setActiveTab] = React.useState<string>();
   const [activeAsset, setActiveAsset] = React.useState<AssetType>();
@@ -27,21 +31,33 @@ const FormattedView: React.FC = () => {
   const { isOpen, handleClick } = useModal();
   const { searchValue, setSearchValue } = useSearch();
 
+  /**
+   * fetch tabs
+   */
   const { data: tabs } = useQuery({
     queryKey: ['library-tabs'],
     queryFn: getTabs,
   });
 
+  /**
+   * set active tab on first load of the tabs
+   */
   React.useEffect(() => {
     if (tabs && tabs.length > 0) {
       setActiveTab(tabs[0]._id);
     }
   }, [tabs]);
 
+  /**
+   * get selected tab by active tab id
+   */
   const selectedTab = React.useMemo(() => {
     return tabs?.find((tab) => tab._id === activeTab);
   }, [tabs, activeTab]);
 
+  /**
+   * get current assets types to fetch only the required data
+   */
   const currentAssetsDataTypes = React.useMemo(() => {
     const allowedTypes = selectedTab?.sections
       ?.map((s) => s.allowedTypes)
@@ -50,6 +66,9 @@ const FormattedView: React.FC = () => {
     return uniqueTypes;
   }, [selectedTab]);
 
+  /**
+   * handle asset click
+   */
   const handleAssetClick = React.useCallback(
     (asset: AssetType) => {
       setActiveAsset(asset);
@@ -58,6 +77,9 @@ const FormattedView: React.FC = () => {
     [handleClick],
   );
 
+  /**
+   * fetch assets by current required data types and search value (if any)
+   */
   const { data: assetsList, isLoading: assetsListLoading } = useQuery({
     queryKey: ['library-assets-by-tab', currentAssetsDataTypes, searchValue],
     queryFn: async () => {
@@ -81,7 +103,7 @@ const FormattedView: React.FC = () => {
   });
 
   /**
-   * modal content
+   * specific modal content based on the asset type
    */
   const modalContent = React.useMemo(() => {
     if (!activeAsset) return null;
@@ -109,12 +131,17 @@ const FormattedView: React.FC = () => {
   }, [activeAsset]);
 
   /**
-   * @todo implement copy link functionality
+   * copy asset url to clipboard
    */
   const handleCopyLink = React.useCallback(() => {
-    console.log('handleCopyLink', activeAsset);
+    if (activeAsset?.url) {
+      navigator.clipboard.writeText(activeAsset?.url);
+    }
   }, [activeAsset]);
 
+  /**
+   * modal extra top actions
+   */
   const modalExtraTopActions = React.useMemo(() => {
     const items = [
       {

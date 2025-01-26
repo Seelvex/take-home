@@ -2,6 +2,9 @@ import React from 'react';
 import FormattedView from '@/components/library/formatted-view';
 import LibraryHeader from '@/components/library/header';
 
+/**
+ * Library page
+ */
 export default async function Library() {
   return (
     <main className="min-h-screen p-8 flex flex-col items-center gap-9">
