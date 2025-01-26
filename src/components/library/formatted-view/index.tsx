@@ -44,14 +44,6 @@ const FormattedView: React.FC<FormattedViewProps> = (props) => {
   } = useRequestAccessContext();
 
   /**
-   * fetch tabs
-   */
-  /* const { data: tabs } = useQuery({
-    queryKey: ['library-tabs'],
-    queryFn: getTabs,
-  }); */
-
-  /**
    * set active tab on first load of the tabs
    */
   React.useEffect(() => {
