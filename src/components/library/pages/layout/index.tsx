@@ -14,7 +14,7 @@ interface LayoutModalProps {
  * Layout modal component
  * Used to display layout specific information
  */
-const LayoutModal: React.FC<LayoutModalProps> = (props) => {
+const LayoutPage: React.FC<LayoutModalProps> = (props) => {
   const { asset } = props;
 
   const { data: linkedEntities } = useQuery({
@@ -75,4 +75,4 @@ const LayoutModal: React.FC<LayoutModalProps> = (props) => {
   );
 };
 
-export default LayoutModal;
+export default LayoutPage;

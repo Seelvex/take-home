@@ -8,9 +8,9 @@ const SquareAvatar: React.FC<SquareAvatarProps> = (props) => {
 
   return (
     <div
-      className={`place-content-center text-center rounded-md aspect-square w-1/4 bg-slate-200 ${className}`}
+      className={`flex items-center justify-center rounded-md aspect-square w-1/4 bg-slate-200 ${className}`}
     >
-      <span>{component}</span>
+      {component}
     </div>
   );
 };

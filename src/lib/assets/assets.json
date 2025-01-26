@@ -1,32 +1,34 @@
 [
   {
     "_id": "6794d6d4025446bd7728bf98",
-    "title": "Title1",
-    "subTitle": "SubTitle1",
-    "description": "Desc item1",
+    "title": "Modern Dashboard Layout",
+    "subTitle": "An intuitive layout for dashboards",
+    "description": "A responsive and user-friendly layout designed to streamline data visualization for modern dashboards.",
     "type": "layout",
     "tags": [
       "featured",
-      "tadsadsadsg4"
+      "modern",
+      "responsive",
+      "dashboard"
     ],
     "metrics": {
-      "Used": 2,
-      "Type": "type1",
-      "Pages no.": 3,
-      "Last Updated": "2021-09-01"
+      "Used": 120,
+      "Type": "template",
+      "Pages no.": 5,
+      "Last Updated": "2024-12-15"
     },
-    "url": "test",
-    "previewUrl": "test",
+    "url": "https://example.com/layout/modern-dashboard",
+    "previewUrl": "https://example.com/layout/modern-dashboard/preview",
     "businessQuestions": [
       {
         "id": "1",
-        "title": "Title1",
-        "description": "Desc item1"
+        "title": "What makes this layout unique?",
+        "description": "This layout features modular components that are easy to customize and adapt."
       },
       {
         "id": "2",
-        "title": "Title2",
-        "description": "Desc item2"
+        "title": "How can this layout improve user engagement?",
+        "description": "The responsive design ensures optimal viewing experiences across all devices."
       }
     ],
     "linkedEntities": [
@@ -34,86 +36,98 @@
         "type": "kpi",
         "_id": "6794d6d4025446bd7728bf983232",
         "using": true
+      },
+      {
+        "type": "storyboard",
+        "_id": "8904d6d4025446bd7728bf99",
+        "using": false
       }
     ]
   },
   {
     "_id": "6794d6d4025446bd7728bf983232",
-    "title": "Kpi1",
-    "subTitle": "SubTitle1 Kpi1",
-    "description": "Desc Kpi1",
+    "title": "Revenue KPI",
+    "subTitle": "Tracking revenue trends",
+    "description": "A comprehensive KPI for monitoring and analyzing revenue fluctuations.",
     "type": "kpi",
     "tags": [
-      "trending"
+      "trending",
+      "finance"
     ],
-    "url": "test",
+    "url": "https://example.com/kpi/revenue",
     "metrics": {
-      "Total Profit": 100000,
-      "Total Profit (Last Month)": 200000,
-      "Total Profit (Last Year)": 300000
+      "Total Profit": 125000,
+      "Total Profit (Last Month)": 110000,
+      "Total Profit (Last Year)": 1500000
     },
     "businessQuestions": [
       {
         "id": "1",
-        "title": "Title1",
-        "description": "Desc item1"
+        "title": "What is the revenue trend this month?",
+        "description": "The KPI provides insights into revenue changes compared to previous months."
       },
       {
         "id": "2",
-        "title": "Title2",
-        "description": "Desc item2"
+        "title": "How does this year's revenue compare to last year?",
+        "description": "Analyze the yearly revenue growth using this KPI."
       }
     ],
     "calculations": {
-      "Total Profit": "Calculated on the basis that Total Profit (Last Month) - Total Profit (Last Year)",
-      "Total Profit (Last Month)": "Calculated on the Total Profit (Last Month)",
-      "Total Profit (Last Year)": "Calculated on the Total Profit (Last Year)"
+      "Total Profit": "Calculated as total revenue minus total expenses for the month.",
+      "Total Profit (Last Month)": "Derived from the revenue and expense data for the previous month.",
+      "Total Profit (Last Year)": "Summation of monthly profits from the previous year."
     },
     "visuals": [
-      "chart",
-      "lines"
+      "bar chart",
+      "line graph",
+      "pie chart"
     ],
     "affiliateList": [
       {
         "_id": "1",
-        "title": "Affiliate1",
-        "description": "Desc Affiliate1",
-        "score": 4
+        "title": "Finance Tracker Pro",
+        "description": "A robust tool for managing financial data.",
+        "score": 4.5
       },
       {
         "_id": "2",
-        "title": "Affiliate2",
-        "description": "Desc Affiliate2",
-        "score": 3
+        "title": "Expense Manager Plus",
+        "description": "An application to track and control expenses efficiently.",
+        "score": 4.0
       }
     ]
   },
   {
     "_id": "6794d6d4025446bd7728bf98",
-    "title": "Title3",
-    "subTitle": "SubTitle3",
-    "description": "Desc item3",
+    "title": "Project Timeline Storyboard",
+    "subTitle": "Visualize project milestones effectively",
+    "description": "A storyboard template to plan, track, and present project timelines with clarity.",
     "type": "storyboard",
-    "url": "test",
+    "url": "https://example.com/storyboard/project-timeline",
     "linkedEntities": [
       {
         "type": "kpi",
         "_id": "6794d6d4025446bd7728bf983232",
         "using": true
+      },
+      {
+        "type": "layout",
+        "_id": "6794d6d4025446bd7728bf98",
+        "using": false
       }
     ],
     "affiliateList": [
       {
         "_id": "1",
-        "title": "Affiliate1",
-        "description": "Desc Affiliate1",
-        "score": 4
+        "title": "Project Planner Deluxe",
+        "description": "An advanced tool for detailed project planning.",
+        "score": 4.8
       },
       {
         "_id": "2",
-        "title": "Affiliate2",
-        "description": "Desc Affiliate2",
-        "score": 3
+        "title": "Milestone Tracker",
+        "description": "A simple and efficient way to track project milestones.",
+        "score": 4.2
       }
     ]
   }

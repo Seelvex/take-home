@@ -11,10 +11,10 @@ import Section from '../section';
 import Asset from '../asset';
 import Modal from '@/components/shared/modal';
 import { getTabs } from '@/lib/api/tabs';
-import KpiModal from '../modals/kpi';
-import LayoutModal from '../modals/layout';
-import AssetModal from '../modals/asset';
-import StoryboardModal from '../modals/storyboard';
+import KpiPage from '../pages/kpi';
+import LayoutPage from '../pages/layout';
+import AssetModal from '../pages/asset';
+import StoryboardPage from '../pages/storyboard';
 import Button from '@/components/shared/button';
 import LinkIcon from '@heroicons/react/24/solid/LinkIcon';
 import BookmarkIcon from '@heroicons/react/24/solid/BookmarkIcon';
@@ -116,12 +116,12 @@ const FormattedView: React.FC = () => {
     if (!activeAsset) return null;
     switch (activeAsset.type) {
       case 'kpi':
-        return <KpiModal asset={activeAsset} />;
+        return <KpiPage asset={activeAsset} />;
       case 'layout':
-        return <LayoutModal asset={activeAsset} />;
+        return <LayoutPage asset={activeAsset} />;
       case 'storyboard':
         return (
-          <StoryboardModal
+          <StoryboardPage
             asset={activeAsset}
             closeAssetModal={handleClickAssetModal}
           />
@@ -231,7 +231,7 @@ const FormattedView: React.FC = () => {
               <Section key={s.id} {...s}>
                 {assetsListLoading ? 'Loading...' : null}
                 {filteredAssets && filteredAssets.length > 0 ? (
-                  <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
+                  <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
                     {filteredAssets?.map((asset) => (
                       <Asset
                         key={asset._id.toString()}

@@ -10,7 +10,7 @@ interface KpiModalProps {
  * KPI modal component
  * Used to display KPI specific information
  */
-const KpiModal: React.FC<KpiModalProps> = (props) => {
+const KpiPage: React.FC<KpiModalProps> = (props) => {
   const { asset } = props;
 
   return (
@@ -80,4 +80,4 @@ const KpiModal: React.FC<KpiModalProps> = (props) => {
   );
 };
 
-export default KpiModal;
+export default KpiPage;

@@ -12,14 +12,14 @@ import { useRequestAccessContext } from '@/hooks/useRequestAccessContext';
 
 interface StoryboardModalProps {
   asset: AssetType;
-  closeAssetModal: () => void;
+  closeAssetModal?: () => void;
 }
 
 /**
  * Storyboard modal component
  * Used to display storyboard specific information
  */
-const StoryboardModal: React.FC<StoryboardModalProps> = (props) => {
+const StoryboardPage: React.FC<StoryboardModalProps> = (props) => {
   const { asset, closeAssetModal } = props;
 
   const { handleClick } = useRequestAccessContext();
@@ -44,7 +44,9 @@ const StoryboardModal: React.FC<StoryboardModalProps> = (props) => {
     /**
      * close the asset modal after the request access button is clicked to avoid modal on modal
      */
-    closeAssetModal();
+    if (typeof closeAssetModal === 'function') {
+      closeAssetModal();
+    }
   }, [asset, closeAssetModal, handleClick]);
 
   /**
@@ -104,4 +106,4 @@ const StoryboardModal: React.FC<StoryboardModalProps> = (props) => {
   );
 };
 
-export default StoryboardModal;
+export default StoryboardPage;

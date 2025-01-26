@@ -2,6 +2,7 @@ import React from 'react';
 import { AssetProps } from './types';
 import Card from '@/components/shared/card';
 import SquareAvatar from '@/components/shared/square-avatar';
+import { ChartPieIcon } from '@heroicons/react/24/solid';
 
 /**
  * Asset component
@@ -24,8 +25,8 @@ const Asset: React.FC<AssetProps> = (props) => {
       onClick={handleClick}
     >
       <SquareAvatar
-        component={asset?.type?.[0]?.toLocaleUpperCase()}
-        className="text-slate-500 font-bold text-3xl"
+        component={<ChartPieIcon className="h-10 w-10" />}
+        className="text-slate-500 min-w-[100px]"
       />
       <div className="place-content-center">
         <p className="font-bold">{asset?.title}</p>
