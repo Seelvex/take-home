@@ -1,7 +1,11 @@
-import { TabType } from '@/components/library/asset/types';
-import tabs from '@/lib/assets/tabs.json';
+'use server';
 
-/* export async function getTabs() {
+import { TabType } from '@/components/library/asset/types';
+import client, { DB_NAME } from '@/lib/mongodb';
+
+const COLLECTION_NAME = 'tabs';
+
+export async function getTabs() {
   try {
     const mongoClient = await client.connect();
     const data = await mongoClient
@@ -19,8 +23,4 @@ import tabs from '@/lib/assets/tabs.json';
     console.error(e);
     return [];
   }
-} */
-
-export async function getTabs() {
-  return tabs as TabType[];
 }
