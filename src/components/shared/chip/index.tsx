@@ -1,15 +1,20 @@
 interface ChipProps {
   label: string;
+  className?: string;
   color?: string;
 }
 
 const Chip: React.FC<ChipProps> = (props) => {
-  const { label, color = 'bg-slate-200 text-slate-500' } = props;
+  const {
+    label,
+    className = '',
+    color = 'bg-slate-200 text-slate-500',
+  } = props;
   return (
     <div
-      className={`px-2 py-1 rounded-md text-xs text-center font-semibold ${color}`}
+      className={`px-2 py-1 rounded-md text-xs text-center font-semibold ${color} ${className}`}
     >
-      <p>{label}</p>
+      <span>{label}</span>
     </div>
   );
 };

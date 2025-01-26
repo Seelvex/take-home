@@ -19,17 +19,24 @@ import Button from '@/components/shared/button';
 import LinkIcon from '@heroicons/react/24/solid/LinkIcon';
 import BookmarkIcon from '@heroicons/react/24/solid/BookmarkIcon';
 import LibrarySearchBar from '../search-bar';
+import { useRequestAccessContext } from '@/hooks/useRequestAccessContext';
+import RequestAccessModal from '../shared/RequestAccessModal';
 
 /**
  * Formatted view component
- * Used to display library content depending on the filters applied to the page
+ * - Used to display library content depending on the filters applied to the page
  */
 const FormattedView: React.FC = () => {
   const [activeTab, setActiveTab] = React.useState<string>();
   const [activeAsset, setActiveAsset] = React.useState<AssetType>();
 
-  const { isOpen, handleClick } = useModal();
+  const { isOpen: isOpenAssetModal, handleClick: handleClickAssetModal } =
+    useModal();
   const { searchValue, setSearchValue } = useSearch();
+  const {
+    isOpen: isOpenRequestAccessModal,
+    handleClick: handleClickRequestAccessModal,
+  } = useRequestAccessContext();
 
   /**
    * fetch tabs
@@ -72,9 +79,9 @@ const FormattedView: React.FC = () => {
   const handleAssetClick = React.useCallback(
     (asset: AssetType) => {
       setActiveAsset(asset);
-      handleClick();
+      handleClickAssetModal();
     },
-    [handleClick],
+    [handleClickAssetModal],
   );
 
   /**
@@ -113,7 +120,12 @@ const FormattedView: React.FC = () => {
       case 'layout':
         return <LayoutModal asset={activeAsset} />;
       case 'storyboard':
-        return <StoryboardModal asset={activeAsset} />;
+        return (
+          <StoryboardModal
+            asset={activeAsset}
+            closeAssetModal={handleClickAssetModal}
+          />
+        );
       default:
         return (
           <AssetModal asset={activeAsset}>
@@ -121,7 +133,7 @@ const FormattedView: React.FC = () => {
           </AssetModal>
         );
     }
-  }, [activeAsset]);
+  }, [activeAsset, handleClickAssetModal]);
 
   /**
    * @todo implement toggle favourite functionality
@@ -227,12 +239,19 @@ const FormattedView: React.FC = () => {
         : null}
 
       <Modal
-        isOpen={isOpen}
-        onClose={handleClick}
+        isOpen={isOpenAssetModal}
+        onClose={handleClickAssetModal}
         extraTopActions={modalExtraTopActions}
         bottomActions={modalBottomActions}
       >
         {modalContent}
+      </Modal>
+
+      <Modal
+        isOpen={isOpenRequestAccessModal}
+        onClose={handleClickRequestAccessModal}
+      >
+        <RequestAccessModal tab={selectedTab} asset={activeAsset} />
       </Modal>
     </React.Fragment>
   );

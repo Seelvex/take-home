@@ -1,6 +1,7 @@
 'use client';
 
 import Button from '@/components/shared/button';
+import { useRequestAccessContext } from '@/hooks/useRequestAccessContext';
 import FolderArrowDownIcon from '@heroicons/react/24/solid/FolderArrowDownIcon';
 import React from 'react';
 
@@ -8,12 +9,14 @@ import React from 'react';
  * Library page header component
  */
 const LibraryHeader: React.FC = () => {
+  const { handleClick } = useRequestAccessContext();
+
   /**
-   * @todo implement logic to handle request
+   * handle request access
    */
   const handleClickRequest = React.useCallback(() => {
-    console.log('Request');
-  }, []);
+    handleClick();
+  }, [handleClick]);
 
   return (
     <div className="flex flex-row-reverse w-full">
