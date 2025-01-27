@@ -26,7 +26,7 @@ const Asset: React.FC<AssetProps> = (props) => {
     >
       <SquareAvatar
         component={<ChartPieIcon className="h-10 w-10" />}
-        className="text-slate-500 min-w-[100px]"
+        className="text-slate-500 w-[100px] h-[100px]"
       />
       <div className="place-content-center">
         <p className="font-bold">{asset?.title}</p>
