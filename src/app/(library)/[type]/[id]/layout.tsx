@@ -15,7 +15,7 @@ export default async function LayoutDetail({
           icon={<ChevronLeftIcon className="h-5 w-5" />}
           label="Go back"
           variant="text"
-          className='px-0'
+          className="px-0"
         />
       </Link>
 

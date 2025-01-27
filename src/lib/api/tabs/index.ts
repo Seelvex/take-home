@@ -3,7 +3,7 @@ import tabs from '@/lib/assets/tabs.json';
 
 /**
  * @todo use mongodb
- * Having to use stackblitz and next v13 I had problems connecting to the db 
+ * Having to use stackblitz and next v13 I had problems connecting to the db
  */
 
 /* 

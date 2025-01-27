@@ -3,7 +3,7 @@ import assets from '@/lib/assets/assets.json';
 
 /**
  * @todo use mongodb
- * Having to use stackblitz and next v13 I had problems connecting to the db 
+ * Having to use stackblitz and next v13 I had problems connecting to the db
  */
 
 /* import client, { DB_NAME } from '@/lib/mongodb';

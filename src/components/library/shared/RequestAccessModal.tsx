@@ -18,7 +18,7 @@ const RequestAccessModal: React.FC<RequestAccessModalProps> = (props) => {
   const { tab, asset } = props;
 
   const [reason, setReason] = React.useState('');
-  
+
   const { handleRequestAccess } = useRequestAccessContext();
 
   /**

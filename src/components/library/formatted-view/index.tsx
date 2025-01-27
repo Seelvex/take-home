@@ -244,7 +244,9 @@ const FormattedView: React.FC = () => {
                     ))}
                   </div>
                 ) : (
-                  <p className='text-slate-500'>No data, try different filters</p>
+                  <p className="text-slate-500">
+                    No data, try different filters
+                  </p>
                 )}
               </Section>
             );
